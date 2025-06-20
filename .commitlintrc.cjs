@@ -1,24 +1,24 @@
-const fs = require('fs')
-const path = require('path')
-const { execSync } = require('child_process')
+const { execSync } = require('node:child_process')
+const fs = require('node:fs')
+const path = require('node:path')
 
 const scopes = fs
   .readdirSync(path.resolve(__dirname, 'src'), { withFileTypes: true })
-  .filter((dirent) => dirent.isDirectory())
-  .map((dirent) => dirent.name.replace(/s$/, ''))
+  .filter(dirent => dirent.isDirectory())
+  .map(dirent => dirent.name.replace(/s$/, ''))
 
 // precomputed scope
 const scopeComplete = execSync('git status --porcelain || true')
   .toString()
   .trim()
   .split('\n')
-  .find((r) => ~r.indexOf('M  src'))
-  ?.replace(/(\/)/g, '%%')
-  ?.match(/src%%((\w|-)*)/)?.[1]
+  .find(r => ~r.indexOf('M  src'))
+  ?.replace(/\//g, '%%')
+  ?.match(/src%%([\w-]*)/)?.[1]
   ?.replace(/s$/, '')
 
 module.exports = {
-  ignores: [(commit) => commit.includes('init')],
+  ignores: [commit => commit.includes('init')],
   extends: ['@commitlint/config-conventional'],
   rules: {
     'body-leading-blank': [2, 'always'],

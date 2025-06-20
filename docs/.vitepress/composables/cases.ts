@@ -1,7 +1,6 @@
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import { ref } from 'vue'
 
-export type CaseData = {
+export interface CaseData {
   name: string
   image: string
   description?: string

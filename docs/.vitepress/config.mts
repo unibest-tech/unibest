@@ -10,7 +10,7 @@ const base = '/unibest/' // default is /
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-CN',
-  base: base,
+  base,
   title: 'unibest 官方文档',
   description: '最好用的 uniapp 开发模板',
   lastUpdated: true,
