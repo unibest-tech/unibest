@@ -4,21 +4,21 @@
       <img
         alt="GitHub Repo stars"
         src="https://img.shields.io/github/stars/codercup/unibest?logo=github&color=%234d80f0&link=https%3A%2F%2Fgithub.com%2Fcodercup%2Funibest"
-      />
+      >
     </a>
     <a href="https://github.com/feige996/unibest">
       <img
         alt="GitHub Repo stars"
         src="https://img.shields.io/github/stars/feige996/unibest?logo=github&color=%234d80f0&link=https%3A%2F%2Fgithub.com%2Ffeige996%2Funibest"
-      />
+      >
     </a>
 
     <a href="https://gitee.com/codercup/unibest/stargazers">
-      <img src="https://gitee.com/codercup/unibest/badge/star.svg?theme=gray" alt="star" />
+      <img src="https://gitee.com/codercup/unibest/badge/star.svg?theme=gray" alt="star">
     </a>
 
     <a href="https://gitcode.com/feige996/unibest/stargazers">
-      <img src="https://gitcode.com/feige996/unibest/star/badge.svg?theme=gray" alt="star" />
+      <img src="https://gitcode.com/feige996/unibest/star/badge.svg?theme=gray" alt="star">
     </a>
 
     <!-- <a href="https://github.com/feige996/unibest">
@@ -29,7 +29,7 @@
       <img
         alt="npm"
         src="https://img.shields.io/npm/dw/create-unibest?logo=npm&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fcreate-unibest"
-      />
+      >
     </a>
 
     <!-- <a href="https://www.npmjs.com/package/create-unibest">

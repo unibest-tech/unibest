@@ -1,4 +1,8 @@
 <!-- .vitepress/layouts/Default.vue -->
+<script setup>
+import VPLayout from '@theme-default/Layout.vue'
+</script>
+
 <template>
   <div class="custom-layout">
     <VPLayout>
@@ -12,10 +16,6 @@
     </VPLayout>
   </div>
 </template>
-
-<script setup>
-import VPLayout from '@theme-default/Layout.vue'
-</script>
 
 <style scoped>
 .footer {
