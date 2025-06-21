@@ -45,14 +45,15 @@ onLoad(() => {
   >
     <block v-for="(item, idx) in tabbarList" :key="item.path">
       <sar-tabbar-item
-        v-if="item.iconType === 'sar'"
-        :title="item.text"
+        v-if="item.iconType === 'uiLib'"
+        :text="item.text"
         :icon="item.icon"
         :name="idx"
       />
+
       <sar-tabbar-item
         v-else-if="item.iconType === 'unocss' || item.iconType === 'iconfont'"
-        :title="item.text"
+        :text="item.text"
         :name="idx"
       >
         <template #icon>
@@ -63,7 +64,7 @@ onLoad(() => {
           />
         </template>
       </sar-tabbar-item>
-      <sar-tabbar-item v-else-if="item.iconType === 'local'" :title="item.text" :name="idx">
+      <sar-tabbar-item v-else-if="item.iconType === 'local'" :text="item.text" :name="idx">
         <template #icon>
           <image :src="item.icon" h-40rpx w-40rpx />
         </template>

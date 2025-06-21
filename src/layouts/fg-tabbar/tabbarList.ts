@@ -9,7 +9,7 @@
  */
 
 // TODO：通过这里切换使用tabbar的策略
-export const selectedTabbarStrategy = 0
+export const selectedTabbarStrategy = 1
 
 // 0 和 1 时，需要tabbar缓存
 export const cacheTabbarEnable = selectedTabbarStrategy < 2
@@ -23,8 +23,8 @@ export const tabbarList = [
     selectedIconPath: 'static/tabbar/homeHL.png',
     pagePath: 'pages/index/index',
     text: '首页',
-    icon: 'home',
-    iconType: 'wot',
+    icon: 'image',
+    iconType: 'uiLib',
   },
   {
     iconPath: 'static/tabbar/example.png',
