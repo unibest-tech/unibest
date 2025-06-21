@@ -21,7 +21,7 @@ import { toast } from './toast'
  */
 export const uploadFileUrl = {
   /** 用户头像上传地址 */
-  USER_AVATAR: import.meta.env.VITE_SERVER_BASEURL + '/user/avatar',
+  USER_AVATAR: `${import.meta.env.VITE_SERVER_BASEURL}/user/avatar`,
 }
 
 /**
@@ -31,12 +31,7 @@ export const uploadFileUrl = {
  * @param formData 额外表单数据
  * @param options 上传选项
  */
-export const useFileUpload = <T = string>(
-  url: string,
-  filePath: string,
-  formData: Record<string, any> = {},
-  options: Omit<UploadOptions, 'sourceType' | 'sizeType' | 'count'> = {},
-) => {
+export function useFileUpload<T = string>(url: string, filePath: string, formData: Record<string, any> = {}, options: Omit<UploadOptions, 'sourceType' | 'sizeType' | 'count'> = {}) {
   return useUpload<T>(
     url,
     formData,
@@ -61,7 +56,7 @@ export interface UploadOptions {
   /** 上传进度回调函数 */
   onProgress?: (progress: number) => void
   /** 上传成功回调函数 */
-  onSuccess?: (res: UniApp.UploadFileSuccessCallbackResult) => void
+  onSuccess?: (res: Record<string, any>) => void
   /** 上传失败回调函数 */
   onError?: (err: Error | UniApp.GeneralCallbackResult) => void
   /** 上传完成回调函数（无论成功失败） */
@@ -76,13 +71,9 @@ export interface UploadOptions {
  * @param options 上传选项
  * @returns 上传状态和控制对象
  */
-export const useUpload = <T = string>(
-  url: string,
-  formData: Record<string, any> = {},
-  options: UploadOptions = {},
+export function useUpload<T = string>(url: string, formData: Record<string, any> = {}, options: UploadOptions = {},
   /** 直接传入文件路径，跳过选择器 */
-  directFilePath?: string,
-) => {
+  directFilePath?: string) {
   /** 上传中状态 */
   const loading = ref(false)
   /** 上传错误状态 */
@@ -161,7 +152,8 @@ export const useUpload = <T = string>(
       success: (res) => {
         const file = res.tempFiles[0]
         // 检查文件大小是否符合限制
-        if (!checkFileSize(file.size)) return
+        if (!checkFileSize(file.size))
+          return
 
         // 开始上传
         loading.value = true
@@ -248,7 +240,7 @@ interface UploadFileOptions<T> {
   /** 上传进度回调 */
   onProgress?: (progress: number) => void
   /** 上传成功回调 */
-  onSuccess?: (res: UniApp.UploadFileSuccessCallbackResult) => void
+  onSuccess?: (res: Record<string, any>) => void
   /** 上传失败回调 */
   onError?: (err: Error | UniApp.GeneralCallbackResult) => void
   /** 上传完成回调 */
@@ -288,20 +280,15 @@ function uploadFile<T>({
       },
       // 确保文件名称合法
       success: (uploadFileRes) => {
+        console.log('上传文件成功:', uploadFileRes)
         try {
           // 解析响应数据
-          const result = JSON.parse(uploadFileRes.data)
-          if (result.code === 1) {
-            // 上传成功
-            data.value = result.data as T
-            onSuccess?.(uploadFileRes)
-          } else {
-            // 业务错误
-            const err = new Error(result.message || '上传失败')
-            error.value = true
-            onError?.(err)
-          }
-        } catch (err) {
+          const { data: _data } = JSON.parse(uploadFileRes.data)
+          // 上传成功
+          data.value = _data as T
+          onSuccess?.(_data)
+        }
+        catch (err) {
           // 响应解析错误
           console.error('解析上传响应失败:', err)
           error.value = true
@@ -326,7 +313,8 @@ function uploadFile<T>({
       progress.value = res.progress
       onProgress?.(res.progress)
     })
-  } catch (err) {
+  }
+  catch (err) {
     // 创建上传任务失败
     console.error('创建上传任务失败:', err)
     error.value = true

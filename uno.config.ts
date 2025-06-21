@@ -1,20 +1,26 @@
+// https://www.npmjs.com/package/@uni-helper/unocss-preset-uni
 import { presetUni } from '@uni-helper/unocss-preset-uni'
 import {
   defineConfig,
-  presetIcons,
   presetAttributify,
+  presetIcons,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
 
 export default defineConfig({
   presets: [
-    presetUni(),
+    presetUni({
+      attributify: {
+        // prefix: 'fg-', // 如果加前缀，则需要在代码里面使用 `fg-` 前缀，如：<div fg-border="1px solid #000"></div>
+        prefixedOnly: true,
+      },
+    }),
     presetIcons({
       scale: 1.2,
       warn: true,
       extraProperties: {
-        display: 'inline-block',
+        'display': 'inline-block',
         'vertical-align': 'middle',
       },
     }),
@@ -33,6 +39,7 @@ export default defineConfig({
       center: 'flex justify-center items-center',
     },
   ],
+  safelist: [],
   rules: [
     [
       'p-safe',

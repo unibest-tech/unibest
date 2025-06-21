@@ -1,26 +1,27 @@
-import Uni from '@dcloudio/vite-plugin-uni'
-import dayjs from 'dayjs'
 import path from 'node:path'
-import { defineConfig, loadEnv } from 'vite'
-// @see https://uni-helper.js.org/vite-plugin-uni-pages
-import UniPages from '@uni-helper/vite-plugin-uni-pages'
+import process from 'node:process'
+import Uni from '@dcloudio/vite-plugin-uni'
+import Components from '@uni-helper/vite-plugin-uni-components'
 // @see https://uni-helper.js.org/vite-plugin-uni-layouts
 import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
+// @see https://github.com/uni-helper/vite-plugin-uni-manifest
+import UniManifest from '@uni-helper/vite-plugin-uni-manifest'
+// @see https://uni-helper.js.org/vite-plugin-uni-pages
+import UniPages from '@uni-helper/vite-plugin-uni-pages'
 // @see https://github.com/uni-helper/vite-plugin-uni-platform
 // 需要与 @uni-helper/vite-plugin-uni-pages 插件一起使用
 import UniPlatform from '@uni-helper/vite-plugin-uni-platform'
-// @see https://github.com/uni-helper/vite-plugin-uni-manifest
-import UniManifest from '@uni-helper/vite-plugin-uni-manifest'
 /**
  * 分包优化、模块异步跨包调用、组件异步跨包引用
  * @see https://github.com/uni-ku/bundle-optimizer
  */
 import Optimization from '@uni-ku/bundle-optimizer'
+import dayjs from 'dayjs'
 import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
+import { defineConfig, loadEnv } from 'vite'
 import ViteRestart from 'vite-plugin-restart'
-import { copyNativeRes } from './vite-plugins/copyNativeRes'
-import Components from '@uni-helper/vite-plugin-uni-components'
+import updatePackageJson from './vite-plugins/updatePackageJson'
 
 // https://vitejs.dev/config/
 export default async ({ command, mode }) => {
@@ -74,7 +75,7 @@ export default async ({ command, mode }) => {
         // 自定义插件禁用 vite:vue 插件的 devToolsEnabled，强制编译 vue 模板时 inline 为 true
         name: 'fix-vite-plugin-vue',
         configResolved(config) {
-          const plugin = config.plugins.find((p) => p.name === 'vite:vue')
+          const plugin = config.plugins.find(p => p.name === 'vite:vue')
           if (plugin && plugin.api && plugin.api.options) {
             plugin.api.options.devToolsEnabled = false
           }
@@ -90,7 +91,7 @@ export default async ({ command, mode }) => {
       // Optimization 插件需要 page.json 文件，故应在 UniPages 插件之后执行
       Optimization({
         enable: {
-          optimization: true,
+          'optimization': true,
           'async-import': true,
           'async-component': true,
         },
@@ -112,16 +113,16 @@ export default async ({ command, mode }) => {
         },
       },
       // 打包分析插件，h5 + 生产环境才弹出
-      UNI_PLATFORM === 'h5' &&
-        mode === 'production' &&
-        visualizer({
-          filename: './node_modules/.cache/visualizer/stats.html',
-          open: true,
-          gzipSize: true,
-          brotliSize: true,
-        }),
+      UNI_PLATFORM === 'h5'
+      && mode === 'production'
+      && visualizer({
+        filename: './node_modules/.cache/visualizer/stats.html',
+        open: true,
+        gzipSize: true,
+        brotliSize: true,
+      }),
       // 只有在 app 平台时才启用 copyNativeRes 插件
-      UNI_PLATFORM === 'app' && copyNativeRes(),
+      // UNI_PLATFORM === 'app' && copyNativeRes(),
       Components({
         extensions: ['vue'],
         deep: true, // 是否递归扫描子目录，
@@ -129,6 +130,7 @@ export default async ({ command, mode }) => {
         dts: 'src/types/components.d.ts', // 自动生成的组件类型声明文件路径（用于 TypeScript 支持）
       }),
       Uni(),
+      updatePackageJson(),
     ],
     define: {
       __UNI_PLATFORM__: JSON.stringify(UNI_PLATFORM),
@@ -161,14 +163,15 @@ export default async ({ command, mode }) => {
             [VITE_APP_PROXY_PREFIX]: {
               target: VITE_SERVER_BASEURL,
               changeOrigin: true,
-              rewrite: (path) => path.replace(new RegExp(`^${VITE_APP_PROXY_PREFIX}`), ''),
+              rewrite: path => path.replace(new RegExp(`^${VITE_APP_PROXY_PREFIX}`), ''),
             },
           }
         : undefined,
     },
     build: {
+      sourcemap: false,
       // 方便非h5端调试
-      sourcemap: VITE_SHOW_SOURCEMAP === 'true', // 默认是false
+      // sourcemap: VITE_SHOW_SOURCEMAP === 'true', // 默认是false
       target: 'es6',
       // 开发环境不用压缩
       minify: mode === 'development' ? false : 'terser',
