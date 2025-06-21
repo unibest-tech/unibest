@@ -3,7 +3,7 @@ import { tabbarStore } from './tabbar'
 // 'i-carbon-code',
 import { tabbarList as _tabBarList, cacheTabbarEnable, selectedTabbarStrategy } from './tabbarList'
 
-// @ts-expect-error 预料中的判断
+// @ts-expect-error 预知的判断
 const customTabbarEnable = selectedTabbarStrategy === 1 || selectedTabbarStrategy === 2
 /** tabbarList 里面的 path 从 pages.config.ts 得到 */
 const tabbarList = _tabBarList.map(item => ({ ...item, path: `/${item.pagePath}` }))
@@ -19,7 +19,7 @@ function selectTabBar(name: number) {
 }
 onLoad(() => {
   // 解决原生 tabBar 未隐藏导致有2个 tabBar 的问题
-  // @ts-expect-error 预料中的判断
+  // @ts-expect-error 预知的判断
   const hideRedundantTabbarEnable = selectedTabbarStrategy === 1
   hideRedundantTabbarEnable
   && uni.hideTabBar({
