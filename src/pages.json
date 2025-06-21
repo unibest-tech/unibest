@@ -29,8 +29,8 @@
         "selectedIconPath": "static/tabbar/homeHL.png",
         "pagePath": "pages/index/index",
         "text": "首页",
-        "icon": "house-door-fill",
-        "iconType": "sar"
+        "icon": "image",
+        "iconType": "uiLib"
       },
       {
         "iconPath": "static/tabbar/example.png",
