@@ -78,7 +78,7 @@ console.log('index')
     <view class="mt-4 text-center">
       模板分支是：
       <text class="text-green-500">
-        base sard-ui
+        base-uview-plus
       </text>
     </view>
   </view>
