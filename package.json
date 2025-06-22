@@ -76,6 +76,7 @@
     "lint:fix": "eslint --fix"
   },
   "dependencies": {
+    "@climblee/uv-ui": "^1.1.20",
     "@dcloudio/uni-app": "3.0.0-4060620250520001",
     "@dcloudio/uni-app-harmony": "3.0.0-4060620250520001",
     "@dcloudio/uni-app-plus": "3.0.0-4060620250520001",
@@ -99,7 +100,6 @@
     "pinia": "2.0.36",
     "pinia-plugin-persistedstate": "3.2.1",
     "qs": "6.5.3",
-    "uview-plus": "^3.4.41",
     "vue": "^3.4.21",
     "z-paging": "2.8.7"
   },
