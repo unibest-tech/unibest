@@ -13,7 +13,7 @@ const { loading, data, run } = useUpload()
 
 <template>
   <view class="p-4 text-center">
-    <up-button @click="run">
+    <up-button type="primary" @click="run">
       选择图片并上传
     </up-button>
     <view v-if="loading" class="h-10 text-blue">
