@@ -61,9 +61,9 @@ function reset() {
     <!-- #endif -->
 
     <!-- http://localhost:9000/#/pages/index/request -->
-    <sar-button class="my-6" @click="run">
+    <up-button class="my-6" @click="run">
       发送请求
-    </sar-button>
+    </up-button>
     <view class="h-16">
       <view v-if="loading">
         loading...
@@ -77,8 +77,8 @@ function reset() {
         </view>
       </block>
     </view>
-    <sar-button theme="danger" class="my-6" :disabled="!data" @click="reset">
+    <up-button theme="danger" class="my-6" :disabled="!data" @click="reset">
       重置数据
-    </sar-button>
+    </up-button>
   </view>
 </template>

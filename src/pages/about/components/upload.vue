@@ -13,9 +13,9 @@ const { loading, data, run } = useUpload()
 
 <template>
   <view class="p-4 text-center">
-    <sar-button @click="run">
+    <up-button @click="run">
       选择图片并上传
-    </sar-button>
+    </up-button>
     <view v-if="loading" class="h-10 text-blue">
       上传...
     </view>

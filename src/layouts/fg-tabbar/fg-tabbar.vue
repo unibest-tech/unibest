@@ -34,7 +34,7 @@ onLoad(() => {
 </script>
 
 <template>
-  <sar-tabbar
+  <up-tabbar
     v-if="customTabbarEnable"
     v-model:current="tabbarStore.curIdx"
     bordered
@@ -44,14 +44,14 @@ onLoad(() => {
     @change="selectTabBar"
   >
     <block v-for="(item, idx) in tabbarList" :key="item.path">
-      <sar-tabbar-item
+      <up-tabbar-item
         v-if="item.iconType === 'uiLib'"
         :text="item.text"
         :icon="item.icon"
         :name="idx"
       />
 
-      <sar-tabbar-item
+      <up-tabbar-item
         v-else-if="item.iconType === 'unocss' || item.iconType === 'iconfont'"
         :text="item.text"
         :name="idx"
@@ -63,12 +63,12 @@ onLoad(() => {
             :class="[item.icon, idx === tabbarStore.curIdx ? 'is-active' : 'is-inactive']"
           />
         </template>
-      </sar-tabbar-item>
-      <sar-tabbar-item v-else-if="item.iconType === 'local'" :text="item.text" :name="idx">
+      </up-tabbar-item>
+      <up-tabbar-item v-else-if="item.iconType === 'local'" :text="item.text" :name="idx">
         <template #icon>
           <image :src="item.icon" h-40rpx w-40rpx />
         </template>
-      </sar-tabbar-item>
+      </up-tabbar-item>
     </block>
-  </sar-tabbar>
+  </up-tabbar>
 </template>
