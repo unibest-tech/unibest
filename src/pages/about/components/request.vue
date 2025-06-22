@@ -61,9 +61,9 @@ function reset() {
     <!-- #endif -->
 
     <!-- http://localhost:9000/#/pages/index/request -->
-    <up-button class="my-6" type="primary" @click="run">
+    <uv-button class="my-6" type="primary" @click="run">
       发送请求
-    </up-button>
+    </uv-button>
     <view class="h-16">
       <view v-if="loading">
         loading...
@@ -77,8 +77,8 @@ function reset() {
         </view>
       </block>
     </view>
-    <up-button type="warning" class="my-6" :disabled="!data" @click="reset">
+    <uv-button type="warning" class="my-6" :disabled="!data" @click="reset">
       重置数据
-    </up-button>
+    </uv-button>
   </view>
 </template>
