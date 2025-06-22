@@ -36,7 +36,9 @@ onLoad(() => {
 <template>
   <up-tabbar
     v-if="customTabbarEnable"
-    v-model:current="tabbarStore.curIdx"
+    :value="tabbarStore.curIdx"
+    active-color="#d81e06"
+    inactive-color="#7d7e80"
     bordered
     safeareainsetbottom
     placeholder
@@ -56,10 +58,19 @@ onLoad(() => {
         :text="item.text"
         :name="idx"
       >
-        <template #icon>
+        <template #active-icon>
           <view
             h-40rpx
             w-40rpx
+            class="text-[#d81e06]"
+            :class="[item.icon, idx === tabbarStore.curIdx ? 'is-active' : 'is-inactive']"
+          />
+        </template>
+        <template #inactive-icon>
+          <view
+            h-40rpx
+            w-40rpx
+            class="text-[#7d7e80]"
             :class="[item.icon, idx === tabbarStore.curIdx ? 'is-active' : 'is-inactive']"
           />
         </template>

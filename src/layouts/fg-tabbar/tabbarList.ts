@@ -9,7 +9,7 @@
  */
 
 // TODO：通过这里切换使用tabbar的策略
-export const selectedTabbarStrategy = 0
+export const selectedTabbarStrategy = 1
 
 // 0 和 1 时，需要tabbar缓存
 export const cacheTabbarEnable = selectedTabbarStrategy < 2
