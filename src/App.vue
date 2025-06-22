@@ -17,7 +17,6 @@ onHide(() => {
 </script>
 
 <style lang="scss">
-@import "uview-plus/index.scss";
 /* stylelint-disable selector-type-no-unknown */
 button::after {
   border: none;
