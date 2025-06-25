@@ -1,27 +1,17 @@
 <script setup lang="ts">
 import { tabbarStore } from './tabbar'
 // 'i-carbon-code',
-import { tabbarList as _tabBarList, cacheTabbarEnable, selectedTabbarStrategy } from './tabbarList'
+import { tabbarList as _tabBarList, CUSTOM_TABBAR_ENABLE } from './tabbarList'
 
-// @ts-expect-error 预知的判断
-const customTabbarEnable = selectedTabbarStrategy === 1 || selectedTabbarStrategy === 2
-/** tabbarList 里面的 path 从 pages.config.ts 得到 */
 const tabbarList = _tabBarList.map(item => ({ ...item, path: `/${item.pagePath}` }))
 function selectTabBar({ value: index }: { value: number }) {
   const url = tabbarList[index].path
   tabbarStore.setCurIdx(index)
-  if (cacheTabbarEnable) {
-    uni.switchTab({ url })
-  }
-  else {
-    uni.navigateTo({ url })
-  }
+  uni.switchTab({ url })
 }
 onLoad(() => {
   // 解决原生 tabBar 未隐藏导致有2个 tabBar 的问题
-  // @ts-expect-error 预知的判断
-  const hideRedundantTabbarEnable = selectedTabbarStrategy === 1
-  hideRedundantTabbarEnable
+  CUSTOM_TABBAR_ENABLE
   && uni.hideTabBar({
     fail(err) {
       console.log('hideTabBar fail: ', err)
@@ -35,7 +25,7 @@ onLoad(() => {
 
 <template>
   <wd-tabbar
-    v-if="customTabbarEnable"
+    v-if="CUSTOM_TABBAR_ENABLE"
     v-model="tabbarStore.curIdx"
     bordered
     safeareainsetbottom

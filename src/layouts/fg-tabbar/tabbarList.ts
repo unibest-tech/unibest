@@ -1,31 +1,31 @@
 /**
- * tabbar 选择的策略，更详细的介绍见 tabbar.md 文件
- * 0: 'NATIVE_TABBAR'  `完全原生 tabbar`
- * 2: 'FULL_CUSTOM_TABBAR' `全自定义 tabbar`
- * 1: 'HALF_CUSTOM_TABBAR' `半自定义 tabbar`
- * 3: 'NO_TABBAR' `无 tabbar`
+ * 2025-06-25 v3.3.0版（重新梳理tabbar配置）
  *
- * 温馨提示：本文件的任何代码更改了之后，都需要重新运行，否则 pages.json 不会更新导致错误
+ * 1)原生tabbar，不需要关心 本文件夹里面的内容。(这是默认配置)
+ * 2)自定义tabbar（带缓存），保留 `pages.config.ts 的 tabBar配置`，修改本文件对应的代码。
+ * 3)自定义tabbar（不带缓存），经过调查和合理性判断，认定这是个伪需求，默认不提供。(如果需要，请联系菲鸽，我们battle一下^_^，看是不是真的有需求)
+ * 4)无tabbar，直接删除下面的tabBar配置即可。（同样不需要关心`layouts/fg-tabbar`）
+ *
+ * 温馨提示：这样算下来就只剩2种了，一个是原生tabbar，一个是带缓存的自定义tabbar(简称自定义tabbar)。
  */
 
-// TODO：通过这里切换使用tabbar的策略
-export const selectedTabbarStrategy = 0
+// TODO：是否开启自定义tabbar，默认不开启(不开启表示使用原生tabbar，开启表示使用自定义tabbar)
+export const CUSTOM_TABBAR_ENABLE = false
 
-// selectedTabbarStrategy==0 时，需要填 iconPath 和 selectedIconPath
-// selectedTabbarStrategy==1 or 2 时，需要填 icon 和 iconType
-// selectedTabbarStrategy==3 时，tabbarList 不生效
+/**
+ * 根据您选择的UI框架，配置相应的字段信息
+ * pagePath 需要与 pages.config.ts 里面的 tabBar.list 里面的 pagePath 保持一致，这样才有缓存效果。
+ * iconType: uiLib, unocss, local, iconfont。
+ */
 export const tabbarList = [
   {
-    iconPath: 'static/tabbar/home.png',
-    selectedIconPath: 'static/tabbar/homeHL.png',
     pagePath: 'pages/index/index',
     text: '首页',
     icon: 'home',
+    // 选用 UI  框架自带的 icon时，iconType 为 uiLib
     iconType: 'uiLib',
   },
   {
-    iconPath: 'static/tabbar/example.png',
-    selectedIconPath: 'static/tabbar/exampleHL.png',
     pagePath: 'pages/about/about',
     text: '关于',
     icon: 'i-carbon-code',
@@ -45,21 +45,3 @@ export const tabbarList = [
   //   iconType: 'iconfont',
   // },
 ]
-
-// 0 和 1 时，需要tabbar缓存
-export const cacheTabbarEnable = selectedTabbarStrategy < 2
-
-const _tabbar = {
-  color: '#999999',
-  selectedColor: '#018d71',
-  backgroundColor: '#F8F8F8',
-  borderStyle: 'black',
-  height: '50px',
-  fontSize: '10px',
-  iconWidth: '24px',
-  spacing: '3px',
-  list: tabbarList,
-}
-
-// 0和1 需要显示底部的tabbar的各种配置，以利用缓存
-export const tabBar = cacheTabbarEnable ? _tabbar : undefined
