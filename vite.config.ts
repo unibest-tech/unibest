@@ -168,6 +168,9 @@ export default async ({ command, mode }) => {
           }
         : undefined,
     },
+    esbuild: {
+      drop: VITE_DELETE_CONSOLE === 'true' ? ['console', 'debugger'] : ['debugger'],
+    },
     build: {
       sourcemap: false,
       // 方便非h5端调试
@@ -175,12 +178,6 @@ export default async ({ command, mode }) => {
       target: 'es6',
       // 开发环境不用压缩
       minify: mode === 'development' ? false : 'terser',
-      terserOptions: {
-        compress: {
-          drop_console: VITE_DELETE_CONSOLE === 'true',
-          drop_debugger: true,
-        },
-      },
     },
     optimizeDeps: {
       exclude: ['sard-uniapp'],
