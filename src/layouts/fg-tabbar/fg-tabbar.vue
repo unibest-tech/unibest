@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { tabbarStore } from './tabbar'
 // 'i-carbon-code',
-import { tabbarList as _tabBarList, CUSTOM_TABBAR_ENABLE } from './tabbarList'
+import { tabbarList as _tabBarList, CUSTOM_TABBAR_ENABLE, CUSTOM_TABBAR_NO_CACHE } from './tabbarList'
 
 const tabbarList = _tabBarList.map(item => ({ ...item, path: `/${item.pagePath}` }))
 function selectTabBar({ value: index }: { value: number }) {
   const url = tabbarList[index].path
   tabbarStore.setCurIdx(index)
-  uni.switchTab({ url })
+  if (CUSTOM_TABBAR_NO_CACHE) {
+    uni.navigateTo({ url })
+  }
+  else {
+    uni.switchTab({ url })
+  }
 }
 onLoad(() => {
   // 解决原生 tabBar 未隐藏导致有2个 tabBar 的问题
@@ -25,26 +30,14 @@ onLoad(() => {
 
 <template>
   <wd-tabbar
-    v-if="CUSTOM_TABBAR_ENABLE"
-    v-model="tabbarStore.curIdx"
-    bordered
-    safeareainsetbottom
-    placeholder
-    fixed
+    v-if="CUSTOM_TABBAR_ENABLE" v-model="tabbarStore.curIdx" bordered safeareainsetbottom placeholder fixed
     @change="selectTabBar"
   >
     <block v-for="(item, idx) in tabbarList" :key="item.path">
       <wd-tabbar-item v-if="item.iconType === 'uiLib'" :title="item.text" :icon="item.icon" />
-      <wd-tabbar-item
-        v-else-if="item.iconType === 'unocss' || item.iconType === 'iconfont'"
-        :title="item.text"
-      >
+      <wd-tabbar-item v-else-if="item.iconType === 'unocss' || item.iconType === 'iconfont'" :title="item.text">
         <template #icon>
-          <view
-            h-40rpx
-            w-40rpx
-            :class="[item.icon, idx === tabbarStore.curIdx ? 'is-active' : 'is-inactive']"
-          />
+          <view h-40rpx w-40rpx :class="[item.icon, idx === tabbarStore.curIdx ? 'is-active' : 'is-inactive']" />
         </template>
       </wd-tabbar-item>
       <wd-tabbar-item v-else-if="item.iconType === 'local'" :title="item.text">

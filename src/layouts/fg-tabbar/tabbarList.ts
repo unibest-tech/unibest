@@ -3,7 +3,7 @@
  *
  * 1)原生tabbar，不需要关心 本文件夹里面的内容。(这是默认配置)
  * 2)自定义tabbar（带缓存），保留 `pages.config.ts 的 tabBar配置`，修改本文件对应的代码。
- * 3)自定义tabbar（不带缓存），经过调查和合理性判断，认定这是个伪需求，默认不提供。(如果需要，请联系菲鸽，我们battle一下^_^，看是不是真的有需求)
+ * 3)自定义tabbar（不带缓存），虽然我认为这是个伪需求，但是问卷调查中确实有人使用这个。要删除 `pages.config.ts 的 tabBar配置`。
  * 4)无tabbar，直接删除下面的tabBar配置即可。（同样不需要关心`layouts/fg-tabbar`）
  *
  * 温馨提示：这样算下来就只剩2种了，一个是原生tabbar，一个是带缓存的自定义tabbar(简称自定义tabbar)。
@@ -11,6 +11,8 @@
 
 // TODO：是否开启自定义tabbar，默认不开启(不开启表示使用原生tabbar，开启表示使用自定义tabbar)
 export const CUSTOM_TABBAR_ENABLE = false
+// TODO: 是否开启自定义tabbar的无缓存模式，默认不开启（开启表示使用自定义tabbar的无缓存模式，并且需要把 `pages.config.ts` 里面的 tabBar 配置删除）
+export const CUSTOM_TABBAR_NO_CACHE = false
 
 /**
  * 根据您选择的UI框架，配置相应的字段信息

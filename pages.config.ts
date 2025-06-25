@@ -21,9 +21,9 @@ export default defineUniPages({
    * 2025-06-25 v3.3.0版（重新梳理tabbar配置）
    *
    * 1)原生tabbar，不需要关心 `layouts/fg-tabbar` 文件夹里面的内容。(这是默认配置)
-   * 2)自定义tabbar（带缓存），同时保留下面的配置和修改 `/layouts/fg-tabbar/tabbarList.ts` 对应的代码。
-   * 3)自定义tabbar（不带缓存），经过调查和合理性判断，认定这是个伪需求，默认不提供。(如果需要，请联系菲鸽，我们battle一下^_^，看是不是真的有需求)
-   * 4)无tabbar，直接删除下面的tabBar配置即可。（同样不需要关心`layouts/fg-tabbar`）
+   * 2)自定义tabbar（带缓存），保留下面的配置和修改 `/layouts/fg-tabbar/tabbarList.ts` 对应的代码。
+   * 3)自定义tabbar（不带缓存），删除下面的配置和修改 `/layouts/fg-tabbar/tabbarList.ts` 对应的代码。
+   * 4)无tabbar，直接删除下面的tabBar配置即可。
    *
    * 温馨提示：这样算下来就只剩2种了，一个是原生tabbar，一个是带缓存的自定义tabbar(简称自定义tabbar)。
    * 温馨提示：本文件的任何代码更改了之后，都需要重新运行，否则 pages.json 还是旧的，导致不是预期效果。
