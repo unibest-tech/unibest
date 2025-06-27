@@ -48,6 +48,7 @@ export default async ({ command, mode }) => {
     VITE_SERVER_BASEURL,
     VITE_DELETE_CONSOLE,
     VITE_SHOW_SOURCEMAP,
+    VITE_APP_PUBLIC_BASE,
     VITE_APP_PROXY,
     VITE_APP_PROXY_PREFIX,
   } = env
@@ -55,7 +56,7 @@ export default async ({ command, mode }) => {
 
   return defineConfig({
     envDir: './env', // 自定义env目录
-
+    base: VITE_APP_PUBLIC_BASE,
     plugins: [
       UniPages({
         exclude: ['**/components/**/**.*'],
@@ -177,7 +178,7 @@ export default async ({ command, mode }) => {
       // sourcemap: VITE_SHOW_SOURCEMAP === 'true', // 默认是false
       target: 'es6',
       // 开发环境不用压缩
-      minify: mode === 'development' ? false : 'terser',
+      minify: mode === 'development' ? false : 'esbuild',
     },
     optimizeDeps: {
       exclude: ['sard-uniapp'],
