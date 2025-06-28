@@ -136,7 +136,7 @@ declare global {
        *
        * [GET]
        *
-       * **path:** /
+       * **path:** /api
        *
        * ---
        *
@@ -155,7 +155,7 @@ declare global {
        *
        * [POST] 创建新猫
        *
-       * **path:** /cats
+       * **path:** /api/cats
        *
        * ---
        *
@@ -205,7 +205,7 @@ declare global {
        *
        * [GET] 获取所有猫
        *
-       * **path:** /cats
+       * **path:** /api/cats
        *
        * ---
        *
@@ -235,7 +235,7 @@ declare global {
        *
        * [GET] 获取单只猫
        *
-       * **path:** /cats/{id}
+       * **path:** /api/cats/{id}
        *
        * ---
        *
@@ -286,7 +286,7 @@ declare global {
        *
        * [PATCH] 更新猫信息
        *
-       * **path:** /cats/{id}
+       * **path:** /api/cats/{id}
        *
        * ---
        *
@@ -345,7 +345,7 @@ declare global {
        *
        * [DELETE] 删除猫
        *
-       * **path:** /cats/{id}
+       * **path:** /api/cats/{id}
        *
        * ---
        *

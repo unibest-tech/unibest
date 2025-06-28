@@ -17,10 +17,10 @@
  * **Do not edit the file manually.**
  */
 export default {
-  'App.AppController_getHello': ['GET', '/'],
-  'Cats.CatsController_create': ['POST', '/cats'],
-  'Cats.CatsController_findAll': ['GET', '/cats'],
-  'Cats.CatsController_findOne': ['GET', '/cats/{id}'],
-  'Cats.CatsController_update': ['PATCH', '/cats/{id}'],
-  'Cats.CatsController_remove': ['DELETE', '/cats/{id}']
+  'App.AppController_getHello': ['GET', '/api'],
+  'Cats.CatsController_create': ['POST', '/api/cats'],
+  'Cats.CatsController_findAll': ['GET', '/api/cats'],
+  'Cats.CatsController_findOne': ['GET', '/api/cats/{id}'],
+  'Cats.CatsController_update': ['PATCH', '/api/cats/{id}'],
+  'Cats.CatsController_remove': ['DELETE', '/api/cats/{id}']
 };

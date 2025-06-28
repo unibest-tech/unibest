@@ -21,10 +21,23 @@ console.log(data)
 function reset() {
   data.value = initialData
 }
+
+const alovaData = ref({})
+async function getAlova() {
+  const res = await Apis.Cats.CatsController_findOne({ pathParams: { id: 1 } })
+  console.log('res', res)
+  alovaData.value = res
+}
 </script>
 
 <template>
   <view class="p-6 text-center">
+    <button class="my-6 w-200px text-green" @click="getAlova">
+      发送请求1
+    </button>
+    <view class="text-green leading-8">
+      请求1响应数据： {{ alovaData }}
+    </view>
     <button class="my-6 w-200px text-green" @click="send">
       发送请求
     </button>
