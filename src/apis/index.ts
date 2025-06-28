@@ -9,7 +9,7 @@ export const alovaInstance = createAlova({
   requestAdapter: fetchAdapter(),
   beforeRequest: (method) => {},
   responded: (res) => {
-    return res.json()
+    return res.json().then(res => res.data)
   },
 })
 
