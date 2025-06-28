@@ -106,6 +106,7 @@
     "z-paging": "2.8.7"
   },
   "devDependencies": {
+    "@alova/wormhole": "^1.0.7",
     "@antfu/eslint-config": "^4.15.0",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
