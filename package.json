@@ -55,6 +55,7 @@
     "build:custom": "uni build -p",
     "build:h5": "uni build",
     "build": "uni build",
+    "build:h5:test": "uni build --mode test",
     "build:h5:ssr": "uni build --ssr",
     "build:mp-alipay": "uni build -p mp-alipay",
     "build:mp": "uni build -p mp-weixin",
