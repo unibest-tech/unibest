@@ -41,7 +41,7 @@ onLoad(() => {
     active-color="#d81e06"
     inactive-color="#7d7e80"
     bordered
-    safeareainsetbottom
+    safe-area-inset-bottom
     placeholder
     fixed
     @change="selectTabBar"
