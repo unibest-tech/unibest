@@ -98,6 +98,7 @@
     "abortcontroller-polyfill": "^1.7.8",
     "alova": "^3.3.3",
     "dayjs": "1.11.10",
+    "enum-plus": "2.3.3",
     "js-cookie": "^3.0.5",
     "pinia": "2.0.36",
     "pinia-plugin-persistedstate": "3.2.1",
