@@ -18,6 +18,7 @@ import { question } from './question'
 import filePrompt from './question/file'
 import { templateList } from './question/template/templateDate'
 import {
+  beacon,
   canSkipEmptying,
   downloadTemplate,
   ora,
@@ -25,7 +26,6 @@ import {
   printFinish,
   replaceProjectName,
 } from './utils'
-import { beacon } from './utils/beacon'
 import { postOrderDirectoryTraverse } from './utils/directoryTraverse'
 
 let loading: Ora
@@ -47,6 +47,8 @@ async function init() {
   } = {}
 
   if (!projectName) {
+    const cwd = process.cwd()
+    const root = join(cwd, result.projectName!)
     try {
       result = await question()
       // console.log(`${red('没有项目名时的result: ')}`)
@@ -91,6 +93,7 @@ async function init() {
         process.exit(1)
       }
     }
+
     result = {
       projectName,
       shouldOverwrite: await canSkipEmptying(root)
@@ -114,15 +117,12 @@ async function init() {
     // }
   }
 
-  const cwd = process.cwd()
-  const root = join(cwd, result.projectName!)
-
   // 结束加载动画并显示成功消息
-  ora(`tip1`).start().succeed(`${green('unibest官方文档：https://unibest.tech\n')}`)
+  // ora(`tip1`).start().succeed(`${green('unibest官方文档：https://unibest.tech\n')}`)
   // ora(`tip2`).start().succeed(`${bold('常见问题经常被提及，请点击查阅：https://unibest.tech/base/14-faq\n')}`)
   // ora(`tip3`).start().succeed(`${bold('如果对您有帮助，欢迎赞助、打赏：https://unibest.tech/advanced/rewards/rewards\n')}`)
   const startTime = Date.now()
-  loading.start(`${bold('正在创建模板...')}`)
+  loading = ora(`${bold('正在创建模板...')}`).start()
   // openUrl('https://unibest.tech/base/14-faq')
   // openUrl('https://oss.laf.run/ukw0y1-site/unibest-dashang.html')
   // 打开指定网页
@@ -141,10 +141,10 @@ async function init() {
       return
 
     postOrderDirectoryTraverse(
-  dir,
-  (file: string) => unlinkSync(file),
-  (dir: string) => rmdirSync(dir),
-)
+      dir,
+      (file: string) => unlinkSync(file),
+      (dir: string) => rmdirSync(dir),
+    )
   }
 
   if (existsSync(root) && result.shouldOverwrite)
