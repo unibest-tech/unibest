@@ -6,8 +6,8 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "paths": {
-      "@/*": ["./src/*"],
-      "@img/*": ["./src/static/*"]
+      "@/*": ["packages/templates/src/base/src/*"],
+      "@img/*": ["packages/templates/src/base/src/static/*"]
     },
     "resolveJsonModule": true,
     "types": [
@@ -29,13 +29,13 @@
     "plugins": ["@uni-helper/uni-types/volar-plugin"]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.js",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.jsx",
-    "src/**/*.vue",
-    "src/**/*.json"
+    "packages/templates/src/base/src/**/*.ts",
+    "packages/templates/src/base/src/**/*.js",
+    "packages/templates/src/base/src/**/*.d.ts",
+    "packages/templates/src/base/src/**/*.tsx",
+    "packages/templates/src/base/src/**/*.jsx",
+    "packages/templates/src/base/src/**/*.vue",
+    "packages/templates/src/base/src/**/*.json"
   ],
   "exclude": ["node_modules"]
 }
