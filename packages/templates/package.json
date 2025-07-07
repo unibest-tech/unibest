@@ -1,0 +1,9 @@
+{
+  "name": "@unibest/templates",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "files": [
+    "src/**/*"
+  ]
+}
