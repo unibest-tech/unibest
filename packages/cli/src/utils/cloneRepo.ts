@@ -57,7 +57,7 @@ function getRepoUrlList(url: BaseTemplateList['value']['url']) {
   return [gitee, github].filter(Boolean) as string[]
 }
 
-export async function dowloadTemplate(data: BaseTemplateList['value'], name: string, root: string, loading: Ora) {
+export async function downloadTemplate(data: BaseTemplateList['value'], name: string, root: string, loading: Ora) {
   const repoUrlList = getRepoUrlList(data.url)
   // console.log(`${green('获取到的仓库url:')} ${repoUrlList}`)
 

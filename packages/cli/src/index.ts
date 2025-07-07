@@ -19,7 +19,7 @@ import filePrompt from './question/file'
 import { templateList } from './question/template/templateDate'
 import {
   canSkipEmptying,
-  dowloadTemplate,
+  downloadTemplate,
   ora,
   printBanner,
   printFinish,
@@ -93,7 +93,7 @@ async function init() {
     }
     result = {
       projectName,
-      shouldOverwrite: canSkipEmptying(projectName)
+      shouldOverwrite: await canSkipEmptying(root)
         ? true
         : await pp(),
       templateType: templateType || {
@@ -122,7 +122,7 @@ async function init() {
   // ora(`tip2`).start().succeed(`${bold('常见问题经常被提及，请点击查阅：https://unibest.tech/base/14-faq\n')}`)
   // ora(`tip3`).start().succeed(`${bold('如果对您有帮助，欢迎赞助、打赏：https://unibest.tech/advanced/rewards/rewards\n')}`)
   const startTime = Date.now()
-  loading = ora(`${bold('正在创建模板...')}`).start()
+  loading.start(`${bold('正在创建模板...')}`)
   // openUrl('https://unibest.tech/base/14-faq')
   // openUrl('https://oss.laf.run/ukw0y1-site/unibest-dashang.html')
   // 打开指定网页
@@ -141,10 +141,10 @@ async function init() {
       return
 
     postOrderDirectoryTraverse(
-      dir,
-      dir => rmdirSync(dir),
-      file => unlinkSync(file),
-    )
+  dir,
+  (file: string) => unlinkSync(file),
+  (dir: string) => rmdirSync(dir),
+)
   }
 
   if (existsSync(root) && result.shouldOverwrite)
@@ -154,12 +154,12 @@ async function init() {
     mkdirSync(root)
   if (result.templateType!.type !== 'custom') {
     const { templateType, projectName } = result
-    await dowloadTemplate(templateType!, projectName!, root, loading)
-    printFinish(root, cwd, packageManager, loading, result.templateType!.type as any)
+    await downloadTemplate(templateType!, root)
+    printFinish(projectName!)
     const endTime = Date.now()
     const duration = ((endTime - startTime) / 1000).toFixed(2)
     loading.succeed(`总耗时: ${duration} 秒`)
-    beacon(templateType?.branch || 'base', duration)
+    beacon({ event: 'create', template: templateType?.value, duration })
     return
   }
 
