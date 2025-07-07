@@ -17,19 +17,20 @@
   ],
   "sideEffects": false,
   "bin": {
-    "create-unibest": "outfile.cjs"
+    "create-unibest": "dist/index.cjs"
   },
   "files": [
-    "outfile.cjs"
+    "*.d.ts",
+    "dist"
   ],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
     "prepare": "pnpm build",
-    "prepublishOnly": "nr build",
+    "prepublishOnly": "pnpm build",
     "release": "bumpp",
     "typecheck": "tsc --noEmit",
-    "up": "cd ./template && pnpx taze@latest major -w -r && cd ./base && pnpx @dcloudio/uvm@latest --manager pnpm"
+    "up": "cd ../../templates && pnpx taze@latest major -w -r && cd ../packages/cli && pnpx @dcloudio/uvm@latest --manager pnpm"
   },
   "dependencies": {
     "axios": "^1.9.0",
