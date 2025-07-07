@@ -1,17 +1,11 @@
 {
-  "name": "create-unibest",
+  "name": "@unibest/cli",
   "type": "module",
   "version": "2.4.0",
   "packageManager": "pnpm@9.9.0",
   "description": "快速创建 unibest 项目",
   "author": "菲鸽 <1020103647@qq.com>",
   "license": "MIT",
-  "homepage": "https://github.com/feige996/create-unibest#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/feige996/create-unibest.git"
-  },
-  "bugs": "https://github.com/feige996/create-unibest/issues",
   "keywords": [
     "uni",
     "uni-app",
@@ -39,6 +33,7 @@
   "dependencies": {
     "axios": "^1.9.0",
     "dayjs": "^1.11.13",
+    "fs-extra": "^11.3.0",
     "js-base64": "^3.7.7"
   },
   "devDependencies": {
