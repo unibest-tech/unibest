@@ -1,5 +1,5 @@
 {
-  "name": "@unibest/cli",
+  "name": "create-unibest",
   "type": "module",
   "version": "2.4.0",
   "packageManager": "pnpm@9.9.0",
