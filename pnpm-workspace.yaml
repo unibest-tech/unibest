@@ -1,6 +1,7 @@
 packages:
-  - '**'
-  - '!node_modules'
+  - 'packages/*'
+  - 'templates/*'
+  - 'examples/*' # 可选，存放示例项目
 
 patchedDependencies:
   '@dcloudio/uni-h5': patches/@dcloudio__uni-h5.patch

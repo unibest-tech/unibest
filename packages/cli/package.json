@@ -1,0 +1,61 @@
+{
+  "name": "create-unibest",
+  "type": "module",
+  "version": "2.4.0",
+  "packageManager": "pnpm@9.9.0",
+  "description": "快速创建 unibest 项目",
+  "author": "菲鸽 <1020103647@qq.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/feige996/create-unibest#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feige996/create-unibest.git"
+  },
+  "bugs": "https://github.com/feige996/create-unibest/issues",
+  "keywords": [
+    "uni",
+    "uni-app",
+    "unibest",
+    "create-unibest",
+    "cli",
+    "vue",
+    "miniapp"
+  ],
+  "sideEffects": false,
+  "bin": {
+    "create-unibest": "outfile.cjs"
+  },
+  "files": [
+    "outfile.cjs"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "node outfile.cjs",
+    "prepublishOnly": "nr build",
+    "release": "bumpp",
+    "typecheck": "tsc --noEmit",
+    "up": "cd ./template && pnpx taze@latest major -w -r && cd ./base && pnpx @dcloudio/uvm@latest --manager pnpm"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "dayjs": "^1.11.13",
+    "js-base64": "^3.7.7"
+  },
+  "devDependencies": {
+    "@antfu/ni": "^0.21.12",
+    "@antfu/utils": "^0.7.7",
+    "@types/ejs": "^3.1.5",
+    "@types/minimist": "^1.2.5",
+    "@types/node": "^18.19.11",
+    "@types/prompts": "^2.4.9",
+    "bumpp": "^9.3.0",
+    "ejs": "^3.1.9",
+    "esbuild": "^0.18.20",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "pnpm": "^8.15.1",
+    "prompts": "^2.4.2",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "^5.3.3"
+  }
+}
