@@ -7,7 +7,7 @@
   - `src/index.ts`：命令解析与执行入口
   - `src/prompts.ts`：交互式询问逻辑（原generator/prompts.ts）
 - **依赖**：`@unibest/generator`, `prompts`, `commander`
-- **包名**：`create-unibest`（保持与原独立仓库一致）
+- **包名**：`create-unibest`（保持与原独立仓库一致，所以不用 @unibest/cli）
 
 ### 2. **packages/generator**（内部核心包）
 - **功能**：项目生成引擎与模板渲染
@@ -49,4 +49,3 @@ cli → generator → shared + templates
 2. **可测试性**：各模块可独立单元测试（如generator可脱离CLI单独调用）
 3. **版本协同**：通过pnpm workspace统一管理版本依赖
 4. **未来扩展**：可新增 `plugins/` 子包支持插件系统，或 `presets/` 支持预设配置
-        
