@@ -23,8 +23,9 @@
     "outfile.cjs"
   ],
   "scripts": {
-    "build": "node scripts/build.js",
-    "dev": "node outfile.cjs",
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "prepare": "pnpm build",
     "prepublishOnly": "nr build",
     "release": "bumpp",
     "typecheck": "tsc --noEmit",
@@ -51,6 +52,7 @@
     "pnpm": "^8.15.1",
     "prompts": "^2.4.2",
     "simple-git-hooks": "^2.9.0",
+    "tsup": "^8.5.0",
     "typescript": "^5.3.3"
   }
 }
