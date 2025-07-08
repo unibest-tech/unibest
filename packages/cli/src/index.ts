@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, rmdirSync, unlinkSync } from 'node:fs'
 import { readdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import process from 'node:process'
+import fs from 'fs-extra'
 import { bold, green, red } from 'kolorist'
 import minimist from 'minimist'
 import prompts from 'prompts'
@@ -13,23 +14,45 @@ import { postOrderDirectoryTraverse } from './utils/directoryTraverse'
 
 let loading
 
+const argv = minimist(process.argv.slice(2), {
+  alias: { templateType: ['t'], platforms: ['p'], ui: ['u'] },
+  string: ['_'],
+  boolean: ['i18n'],
+})
+console.log(argv)
+
 /**
  * 初始化项目创建流程
  * 处理命令行参数并执行交互式询问
  */
 async function init() {
   await printBanner()
-  const argv = minimist(process.argv.slice(2), {
-    alias: { templateType: ['t'], platforms: ['p'], ui: ['u'] },
-    string: ['_'],
-    boolean: ['i18n'],
-  })
 
   // 从命令行参数获取项目名称
-  const projectName = argv._[0]
+  let projectName = argv._[0] || '.'
+  // 如果未提供项目名称，则交互式询问
   if (!projectName) {
-    console.log(`${red(figures.cross)} 请指定项目名称: create-unibest <project-name>`)
-    process.exit(1)
+    const response = await prompts({
+      type: 'text',
+      name: 'projectName',
+      message: '请输入项目名称:',
+      initial: 'unibest-project',
+      validate: value => value.trim() !== '' ? true : '项目名称不能为空',
+    })
+
+    // 处理用户取消输入的情况
+    if (!response || !response.projectName) {
+      console.log(`${red(figures.cross)} 操作已取消`)
+      process.exit(1)
+    }
+
+    projectName = response.projectName.trim()
+
+    // 验证项目名称
+    if (!projectName) {
+      console.log(`${red(figures.cross)} 项目名称不能为空`)
+      process.exit(1)
+    }
   }
 
   // 项目根目录
@@ -92,8 +115,8 @@ async function promptForOptions(argv: minimist.ParsedArgs) {
         name: 'platforms',
         message: '请选择目标平台',
         choices: [
+          { title: 'H5', value: 'h5', selected: true, disabled: true },
           { title: '微信小程序', value: 'wechat' },
-          { title: 'H5', value: 'h5' },
           { title: 'APP', value: 'app' },
           { title: '支付宝小程序', value: 'alipay' },
           { title: '抖音小程序', value: 'toutiao' },
@@ -129,7 +152,7 @@ async function promptForOptions(argv: minimist.ParsedArgs) {
 
   // 4. 多语言支持
   const i18n = argv.i18n ?? await prompts({
-    type: 'confirm',
+    type: 'toggle',
     name: 'i18n',
     message: '是否需要多语言支持?',
     initial: false,
