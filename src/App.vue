@@ -18,10 +18,6 @@ onHide(() => {
 
 <style lang="scss">
 @import 'sard-uniapp/index.scss';
-/* stylelint-disable selector-type-no-unknown */
-button::after {
-  border: none;
-}
 
 swiper,
 scroll-view {
