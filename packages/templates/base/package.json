@@ -153,9 +153,6 @@
     "vite-plugin-restart": "^0.4.2",
     "vue-tsc": "^2.2.10"
   },
-  "resolutions": {
-    "bin-wrapper": "npm:bin-wrapper-china"
-  },
   "lint-staged": {
     "*": "eslint --fix"
   }
