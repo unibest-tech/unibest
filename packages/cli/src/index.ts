@@ -47,8 +47,6 @@ async function init() {
   } = {}
 
   if (!projectName) {
-    const cwd = process.cwd()
-    const root = join(cwd, result.projectName!)
     try {
       result = await question()
       // console.log(`${red('没有项目名时的result: ')}`)
@@ -71,6 +69,8 @@ async function init() {
     }
   }
   else {
+    const cwd = process.cwd()
+    const root = join(cwd, result.projectName!)
     const templateType = templateList.find(item => item.value.type === argv?.t)?.value
 
     if (!templateType && argv?.templateType) {
@@ -154,7 +154,7 @@ async function init() {
     mkdirSync(root)
   if (result.templateType!.type !== 'custom') {
     const { templateType, projectName } = result
-    await downloadTemplate(templateType!, root)
+    await downloadTemplate(templateType!.type, root)
     printFinish(projectName!)
     const endTime = Date.now()
     const duration = ((endTime - startTime) / 1000).toFixed(2)
