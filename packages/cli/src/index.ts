@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import type { InitialReturnValue } from 'prompts'
 import { existsSync, mkdirSync, rmdirSync, unlinkSync } from 'node:fs'
 import { readdir } from 'node:fs/promises'
 import { join } from 'node:path'
@@ -61,7 +62,7 @@ async function init() {
     //   ...config
     // })
     loading.succeed(`${green('项目创建成功!')}`)
-    printFinish(projectName, cwd, 'pnpm')
+    printFinish(projectName)
   }
   catch (error) {
     loading.fail(`${red('项目创建失败:')} ${(error as Error).message}`)
@@ -97,9 +98,8 @@ async function promptForOptions(argv: minimist.ParsedArgs) {
           { title: '支付宝小程序', value: 'alipay' },
           { title: '抖音小程序', value: 'toutiao' },
         ],
-        initial: [0, 1], // 默认选择微信小程序和H5
         hint: '空格键选择, 回车键确认',
-      }).then(res => res.platforms)
+      }).then(res => res.platforms as number[])
 
   // 2. UI库选择 (根据平台过滤)
   const filteredUiOptions = uiLibraries
