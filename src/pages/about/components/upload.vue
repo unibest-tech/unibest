@@ -26,8 +26,8 @@ const { loading, data, run } = useUpload()
       <view class="m-2">
         {{ data }}
       </view>
-      <view v-if="data" class="h-80 w-full">
-        <image :src="data.url" mode="scaleToFill" />
+      <view v-if="data" class="w-full">
+        <image :src="data.url" mode="widthFix" />
       </view>
     </template>
   </view>

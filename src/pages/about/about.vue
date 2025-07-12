@@ -10,12 +10,6 @@
 <script lang="ts" setup>
 import RequestComp from './components/request.vue'
 import UploadComp from './components/upload.vue'
-
-function gotoAlova() {
-  uni.navigateTo({
-    url: '/pages/about/alova',
-  })
-}
 </script>
 
 <template>
@@ -28,9 +22,6 @@ function gotoAlova() {
     </view>
     <RequestComp />
     <UploadComp />
-    <button class="w-200px text-green" @click="gotoAlova">
-      前往 alova 页面
-    </button>
   </view>
 </template>
 
