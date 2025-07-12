@@ -80,6 +80,10 @@
           "style": {
             "navigationBarTitleText": "分包页面"
           }
+        },
+        {
+          "path": "demo/request",
+          "type": "page"
         }
       ]
     }
