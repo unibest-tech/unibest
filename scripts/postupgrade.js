@@ -4,7 +4,7 @@
 
 const { exec } = require('node:child_process')
 
-// 定义要移除的依赖
+// 定义要移除的依赖，如果某个依赖是需要的，注释掉即可。
 const dependencies = [
   '@dcloudio/uni-app-harmony',
   // TODO: 如果需要某个平台的小程序，请手动删除或注释掉
@@ -21,7 +21,7 @@ const dependencies = [
   'vue-i18n',
 ]
 
-// 使用exec执行命令，移除上面的依赖，如果某个依赖是需要的，则上面需要注释一下。
+// 使用exec执行命令，移除上述依赖
 exec(`pnpm un ${dependencies.join(' ')}`, (error, stdout, stderr) => {
   if (error) {
     // 如果有错误，打印错误信息
