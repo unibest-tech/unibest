@@ -86,5 +86,4 @@ console.log('index')
       </text>
     </view>
   </view>
-  <tabbar />
 </template>
