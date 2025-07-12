@@ -59,14 +59,6 @@
       "style": {
         "navigationBarTitleText": "关于"
       }
-    },
-    {
-      "path": "pages/about/alova",
-      "type": "page",
-      "layout": "default",
-      "style": {
-        "navigationBarTitleText": "Alova 请求演示"
-      }
     }
   ],
   "subPackages": [
@@ -74,12 +66,24 @@
       "root": "pages-sub",
       "pages": [
         {
+          "path": "demo/alova",
+          "type": "page",
+          "layout": "default",
+          "style": {
+            "navigationBarTitleText": "Alova 请求演示"
+          }
+        },
+        {
           "path": "demo/index",
           "type": "page",
           "layout": "default",
           "style": {
             "navigationBarTitleText": "分包页面"
           }
+        },
+        {
+          "path": "demo/vue-query",
+          "type": "page"
         }
       ]
     }

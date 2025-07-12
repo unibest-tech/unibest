@@ -11,8 +11,6 @@
 </route>
 
 <script lang="ts" setup>
-import PLATFORM from '@/utils/platform'
-
 defineOptions({
   name: 'Home',
 })
@@ -39,6 +37,7 @@ safeAreaInsets = systemInfo.safeArea
 systemInfo = uni.getSystemInfoSync()
 safeAreaInsets = systemInfo.safeAreaInsets
 // #endif
+
 const author = ref('菲鸽')
 const description = ref(
   'unibest 是一个集成了多种工具和技术的 uniapp 开发模板，由 uniapp + Vue3 + Ts + Vite5 + UnoCss + VSCode 构建，模板具有代码提示、自动格式化、统一配置、代码片段等功能，并内置了许多常用的基本组件和基本功能，让你编写 uniapp 拥有 best 体验。',
@@ -47,8 +46,6 @@ const description = ref(
 onLoad(() => {
   console.log('项目作者:', author.value)
 })
-
-console.log('index')
 </script>
 
 <template>
@@ -72,18 +69,27 @@ console.log('index')
         菲鸽
       </text>
     </view>
+    <!-- #ifndef H5 -->
     <view class="mt-4 text-center">
       官网地址：
       <text class="text-green-500">
         https://unibest.tech
       </text>
     </view>
-    <view class="mt-6 h-1px bg-#eee" />
-    <view class="mt-8 text-center">
-      当前平台是：
-      <text class="text-green-500">
-        {{ PLATFORM.platform }}
-      </text>
+    <!-- #endif -->
+    <!-- #ifdef H5 -->
+    <view class="mt-4 text-center">
+      官网地址：
+      <a class="text-green-500" href="https://unibest.tech" target="_blank">
+        https://unibest.tech
+      </a>
     </view>
+    <view class="mt-4 text-center">
+      新手必看-常见问题：
+      <a class="text-green-500" href="https://unibest.tech/base/14-faq" target="_blank">
+        https://unibest.tech/base/14-faq
+      </a>
+    </view>
+    <!-- #endif -->
   </view>
 </template>
