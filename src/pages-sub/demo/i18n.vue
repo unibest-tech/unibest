@@ -36,7 +36,7 @@ function radioChange(evt) {
 <template>
   <view class="mt-6 center flex-col">
     <view class="p-4 text-red-500 leading-6">
-      经过我的测试发现，小程序里面会有2处BUG：
+      经过我的测试发现，小程序里面会有2处BUG（现已解决，如下）：
       <view>
         <text class="line-through">
           1. 页面标题多语言不生效
