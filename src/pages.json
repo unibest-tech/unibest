@@ -82,7 +82,7 @@
           }
         },
         {
-          "path": "demo/request",
+          "path": "demo/vue-query",
           "type": "page"
         }
       ]
