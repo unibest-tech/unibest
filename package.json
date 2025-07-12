@@ -34,6 +34,8 @@
     "dev:app-ios": "uni -p app-ios",
     "dev:custom": "uni -p",
     "predev": "node ./scripts/predev.js",
+    "predev:mp": "node ./scripts/predev.js",
+    "predev:app": "node ./scripts/predev.js",
     "dev": "uni",
     "dev:h5": "uni",
     "dev:h5:ssr": "uni --ssr",
