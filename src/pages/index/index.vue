@@ -11,8 +11,6 @@
 </route>
 
 <script lang="ts" setup>
-import PLATFORM from '@/utils/platform'
-
 defineOptions({
   name: 'Home',
 })
@@ -72,18 +70,27 @@ console.log('index')
         菲鸽
       </text>
     </view>
+    <!-- #ifndef H5 -->
     <view class="mt-4 text-center">
       官网地址：
       <text class="text-green-500">
         https://unibest.tech
       </text>
     </view>
-    <view class="mt-6 h-1px bg-#eee" />
-    <view class="mt-8 text-center">
-      当前平台是：
-      <text class="text-green-500">
-        {{ PLATFORM.platform }}
-      </text>
+    <!-- #endif -->
+    <!-- #ifdef H5 -->
+    <view class="mt-4 text-center">
+      官网地址：
+      <a class="text-green-500" href="https://unibest.tech" target="_blank">
+        https://unibest.tech
+      </a>
     </view>
+    <view class="mt-4 text-center">
+      新手必看-常见问题：
+      <a class="text-green-500" href="https://unibest.tech/base/14-faq" target="_blank">
+        https://unibest.tech/base/14-faq
+      </a>
+    </view>
+    <!-- #endif -->
   </view>
 </template>
