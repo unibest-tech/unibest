@@ -33,6 +33,7 @@
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",
     "dev:custom": "uni -p",
+    "predev": "node ./scripts/predev.js",
     "dev": "uni",
     "dev:h5": "uni",
     "dev:h5:ssr": "uni --ssr",
