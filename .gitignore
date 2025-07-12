@@ -29,6 +29,9 @@ docs/.vitepress/cache
 
 src/types
 
+src/pages.json
+src/manifest.json
+
 # lock 文件还是不要了，我主要的版本写死就好了
 # pnpm-lock.yaml
 # package-lock.json
