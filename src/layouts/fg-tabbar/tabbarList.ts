@@ -1,5 +1,10 @@
 import type { TabBar } from '@uni-helper/vite-plugin-uni-pages'
 
+type FgTabBarItem = TabBar['list'][0] & {
+  icon: string
+  iconType: 'uiLib' | 'unocss' | 'iconfont'
+}
+
 /**
  * tabbar 选择的策略，更详细的介绍见 tabbar.md 文件
  * 0: 'NO_TABBAR' `无 tabbar`
@@ -21,7 +26,7 @@ export const selectedTabbarStrategy = TABBAR_MAP.NATIVE_TABBAR
 // selectedTabbarStrategy==NATIVE_TABBAR(1) 时，需要填 iconPath 和 selectedIconPath
 // selectedTabbarStrategy==CUSTOM_TABBAR(2,3) 时，需要填 icon 和 iconType
 // selectedTabbarStrategy==NO_TABBAR(0) 时，tabbarList 不生效
-export const tabbarList: TabBar['list'] = [
+export const tabbarList: FgTabBarItem[] = [
   {
     iconPath: 'static/tabbar/home.png',
     selectedIconPath: 'static/tabbar/homeHL.png',
@@ -59,6 +64,8 @@ export const cacheTabbarEnable = selectedTabbarStrategy === TABBAR_MAP.NATIVE_TA
   || selectedTabbarStrategy === TABBAR_MAP.CUSTOM_TABBAR_WITH_CACHE
 
 const _tabbar: TabBar = {
+  // 只有微信小程序支持 custom。App 和 H5 不生效
+  custom: selectedTabbarStrategy === TABBAR_MAP.CUSTOM_TABBAR_WITH_CACHE,
   color: '#999999',
   selectedColor: '#018d71',
   backgroundColor: '#F8F8F8',
@@ -67,7 +74,7 @@ const _tabbar: TabBar = {
   fontSize: '10px',
   iconWidth: '24px',
   spacing: '3px',
-  list: tabbarList,
+  list: tabbarList as unknown as TabBar['list'],
 }
 
 // 0和1 需要显示底部的tabbar的各种配置，以利用缓存

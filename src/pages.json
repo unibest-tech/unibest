@@ -15,6 +15,7 @@
     }
   },
   "tabBar": {
+    "custom": false,
     "color": "#999999",
     "selectedColor": "#018d71",
     "backgroundColor": "#F8F8F8",
@@ -66,6 +67,14 @@
       "layout": "default",
       "style": {
         "navigationBarTitleText": "Alova 请求演示"
+      }
+    },
+    {
+      "path": "pages/about/vue-query",
+      "type": "page",
+      "layout": "default",
+      "style": {
+        "navigationBarTitleText": "Vue Query 请求演示"
       }
     }
   ],
