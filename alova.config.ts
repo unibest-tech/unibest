@@ -11,7 +11,7 @@ export default <Config>{
        * 1. openapi json file url
        * 2. local file
        */
-      input: 'http://localhost:3001/api/api-docs-json',
+      input: 'https://openapi.apipost.net/swagger/v3/4bba8835ccf1000?locale=zh-cn',
 
       /**
        * input file platform. Currently only swagger is supported.
