@@ -10,12 +10,12 @@
     "autoscan": true,
     "custom": {
       "^fg-(.*)": "@/components/fg-$1/fg-$1.vue",
-      "^wd-(.*)": "wot-design-uni/components/wd-$1/wd-$1.vue",
+      "^sar-(.*)": "sard-uniapp/components/$1/$1.vue",
       "^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)": "z-paging/components/z-paging$1/z-paging$1.vue"
     }
   },
   "tabBar": {
-    "custom": false,
+    "custom": true,
     "color": "#999999",
     "selectedColor": "#018d71",
     "backgroundColor": "#F8F8F8",
@@ -30,7 +30,7 @@
         "selectedIconPath": "static/tabbar/homeHL.png",
         "pagePath": "pages/index/index",
         "text": "首页",
-        "icon": "home",
+        "icon": "image",
         "iconType": "uiLib"
       },
       {

@@ -41,9 +41,9 @@ function reset() {
     <!-- #endif -->
 
     <!-- http://localhost:9000/#/pages/index/request -->
-    <wd-button class="my-6" @click="run">
+    <sar-button type="default" class="my-6" @click="run">
       发送请求
-    </wd-button>
+    </sar-button>
     <view class="h-16">
       <view v-if="loading">
         loading...
@@ -57,8 +57,8 @@ function reset() {
         </view>
       </block>
     </view>
-    <wd-button type="error" class="my-6" :disabled="!data" @click="reset">
+    <sar-button type="default" class="my-6" :disabled="!data" @click="reset">
       重置数据
-    </wd-button>
+    </sar-button>
   </view>
 </template>

@@ -21,7 +21,7 @@ export const TABBAR_MAP = {
   CUSTOM_TABBAR_WITHOUT_CACHE: 3,
 }
 // TODO：通过这里切换使用tabbar的策略
-export const selectedTabbarStrategy = TABBAR_MAP.NATIVE_TABBAR
+export const selectedTabbarStrategy = TABBAR_MAP.CUSTOM_TABBAR_WITH_CACHE
 
 // selectedTabbarStrategy==NATIVE_TABBAR(1) 时，需要填 iconPath 和 selectedIconPath
 // selectedTabbarStrategy==CUSTOM_TABBAR(2,3) 时，需要填 icon 和 iconType
@@ -32,7 +32,7 @@ export const tabbarList: FgTabBarItem[] = [
     selectedIconPath: 'static/tabbar/homeHL.png',
     pagePath: 'pages/index/index',
     text: '首页',
-    icon: 'home',
+    icon: 'image',
     // 选用 UI 框架自带的 icon 时，iconType 为 uiLib
     iconType: 'uiLib',
   },

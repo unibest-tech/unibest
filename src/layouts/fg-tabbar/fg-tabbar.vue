@@ -19,6 +19,9 @@ function selectTabBar({ value: index }: { value: number }) {
     uni.navigateTo({ url })
   }
 }
+function onChange(name: number) {
+  selectTabBar({ value: name })
+}
 onLoad(() => {
   // 解决原生 tabBar 未隐藏导致有2个 tabBar 的问题
   const hideRedundantTabbarEnable = selectedTabbarStrategy === TABBAR_MAP.CUSTOM_TABBAR_WITH_CACHE
@@ -35,20 +38,21 @@ onLoad(() => {
 </script>
 
 <template>
-  <wd-tabbar
+  <sar-tabbar
     v-if="customTabbarEnable"
-    v-model="tabbarStore.curIdx"
+    v-model:current="tabbarStore.curIdx"
     bordered
     safe-area-inset-bottom
     placeholder
     fixed
-    @change="selectTabBar"
+    @change="onChange"
   >
     <block v-for="(item, idx) in tabbarList" :key="item.path">
-      <wd-tabbar-item v-if="item.iconType === 'uiLib'" :title="item.text" :icon="item.icon" />
-      <wd-tabbar-item
+      <sar-tabbar-item v-if="item.iconType === 'uiLib'" :name="idx" :text="item.text" :icon="item.icon" />
+      <sar-tabbar-item
         v-else-if="item.iconType === 'unocss' || item.iconType === 'iconfont'"
-        :title="item.text"
+        :name="idx"
+        :text="item.text"
       >
         <template #icon>
           <view
@@ -57,12 +61,12 @@ onLoad(() => {
             :class="[item.icon, idx === tabbarStore.curIdx ? 'is-active' : 'is-inactive']"
           />
         </template>
-      </wd-tabbar-item>
-      <wd-tabbar-item v-else-if="item.iconType === 'local'" :title="item.text">
+      </sar-tabbar-item>
+      <sar-tabbar-item v-else-if="item.iconType === 'local'" :name="idx" :text="item.text">
         <template #icon>
           <image :src="item.icon" h-40rpx w-40rpx />
         </template>
-      </wd-tabbar-item>
+      </sar-tabbar-item>
     </block>
-  </wd-tabbar>
+  </sar-tabbar>
 </template>
