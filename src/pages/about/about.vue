@@ -31,13 +31,11 @@ function gotoVueQuery() {
 
 <template>
   <view>
-    <view class="mt-8 text-center text-3xl">
-      鸽友们好，我是
-      <text class="text-red-500">
-        菲鸽
-      </text>
+    <view class="mt-8 text-center text-xl text-gray-400">
+      组件使用、请求调用、unocss
     </view>
     <RequestComp />
+    <view class="mb-6 h-1px bg-#eee" />
     <view class="text-center">
       <button type="primary" size="mini" class="w-160px" @click="gotoAlova">
         前往 alova 示例页面
@@ -47,6 +45,11 @@ function gotoVueQuery() {
       <button type="primary" size="mini" class="w-160px" @click="gotoVueQuery">
         vue-query 示例页面
       </button>
+    </view>
+    <view class="mt-6 text-center text-sm">
+      <view class="inline-block w-80% text-gray-400">
+        为了方便脚手架动态生成不同UI模板，本页的按钮统一使用UI库无关的原生button
+      </view>
     </view>
   </view>
 </template>
