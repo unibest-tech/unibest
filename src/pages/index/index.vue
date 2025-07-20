@@ -77,13 +77,13 @@ console.log('index')
       </text>
     </view>
     <view class="mt-4 text-center">
-      <wd-button type="primary">
+      <up-button type="primary">
         UI组件按钮
-      </wd-button>
+      </up-button>
     </view>
     <view class="mt-4 text-center">
       UI组件官网：<text class="text-green-500">
-        https://wot-design-uni.cn
+        https://uiadmin.net/uview-plus
       </text>
     </view>
   </view>
