@@ -17,6 +17,7 @@ onHide(() => {
 </script>
 
 <style lang="scss">
+@import 'sard-uniapp/index.scss';
 swiper,
 scroll-view {
   flex: 1;
