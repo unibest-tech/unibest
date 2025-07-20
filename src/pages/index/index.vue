@@ -77,13 +77,13 @@ console.log('index')
       </text>
     </view>
     <view class="mt-4 text-center">
-      <wd-button type="primary">
+      <sar-button type="default">
         UI组件按钮
-      </wd-button>
+      </sar-button>
     </view>
     <view class="mt-4 text-center">
       UI组件官网：<text class="text-green-500">
-        https://wot-design-uni.cn
+        https://sard.wzt.zone/sard-uniapp-docs/
       </text>
     </view>
   </view>
