@@ -11,8 +11,6 @@
 </route>
 
 <script lang="ts" setup>
-import SkButton from '@skiyee/uni-ui/sk-button.vue'
-
 defineOptions({
   name: 'Home',
 })
@@ -79,7 +77,7 @@ console.log('index')
       </text>
     </view>
     <view class="mt-4 text-center">
-      <SkButton>
+      <SkButton color="brand">
         UI组件按钮
       </SkButton>
     </view>

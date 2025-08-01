@@ -140,6 +140,9 @@ importers:
       '@rollup/rollup-darwin-x64':
         specifier: ^4.28.0
         version: 4.28.0
+      '@skiyee/ui-resolver':
+        specifier: ^0.0.2
+        version: 0.0.2
       '@types/node':
         specifier: ^20.17.9
         version: 20.17.9
@@ -2128,6 +2131,9 @@ packages:
     resolution: {integrity: sha512-R4vLAcZRz1GBREjXITQoupn12o9S1TX513Xr0u1JPmhcJu9pushWkjwkHJCqNLCzbuisYGvW563kEU7UFuO/Yg==}
     peerDependencies:
       unocss: '>=66.0.0'
+
+  '@skiyee/ui-resolver@0.0.2':
+    resolution: {integrity: sha512-SijtOgFmOOGPqzk3qR8Fa26NOjMMrOIe2ZDDfcN2AfhMar5dzxeUJi/D5z/CylpdxD5PLbtQyB7NZ0Rm6JQCyQ==}
 
   '@skiyee/uni-ui@0.1.1':
     resolution: {integrity: sha512-iLMD8vgtuvFcgOYzB4EFz5uuQFp7/+RhQicXHl7SlzWtjY/47JWNSExfQsXdsdEzoorhA+DKcbbGw1E0bwKUvw==}
@@ -9242,6 +9248,8 @@ snapshots:
       '@unocss/core': 66.0.0
       '@unocss/rule-utils': 66.0.0
       unocss: 65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))
+
+  '@skiyee/ui-resolver@0.0.2': {}
 
   '@skiyee/uni-ui@0.1.1(@skiyee/ui-preset@0.0.4(unocss@65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))))(vue@3.5.15(typescript@5.7.2))':
     dependencies:
