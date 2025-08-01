@@ -70,9 +70,12 @@ importers:
       '@dcloudio/uni-quickapp-webview':
         specifier: 3.0.0-4060620250520001
         version: 3.0.0-4060620250520001(postcss@8.4.49)(rollup@4.41.1)(vue@3.5.15(typescript@5.7.2))
+      '@skiyee/ui-preset':
+        specifier: ^0.0.5
+        version: 0.0.5(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))
       '@skiyee/uni-ui':
         specifier: ^0.1.1
-        version: 0.1.1(@skiyee/ui-preset@0.0.4(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))))(vue@3.5.15(typescript@5.7.2))
+        version: 0.1.1(@skiyee/ui-preset@0.0.5(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))))(vue@3.5.15(typescript@5.7.2))
       '@tanstack/vue-query':
         specifier: ^5.62.16
         version: 5.62.16(vue@3.5.15(typescript@5.7.2))
@@ -2124,8 +2127,8 @@ packages:
   '@skiyee/ucv@0.1.2':
     resolution: {integrity: sha512-mAlBOTX+CwOAqdmtIxXRU+8pnW0IkisgDoNy6OFQnUxGy4rz3McC1uoDZ1XrbXiZhsDQeyJ5RzkShuxoJeexQQ==}
 
-  '@skiyee/ui-preset@0.0.4':
-    resolution: {integrity: sha512-R4vLAcZRz1GBREjXITQoupn12o9S1TX513Xr0u1JPmhcJu9pushWkjwkHJCqNLCzbuisYGvW563kEU7UFuO/Yg==}
+  '@skiyee/ui-preset@0.0.5':
+    resolution: {integrity: sha512-Ol+6mkEUwB1ovM4qTgfwqZPINgjzuPcv7lCnKiaEpfE3Hm4jB3bNIBtsDaPGiJdmRcpcatzKrxwKNmUG6Ch8XQ==}
     peerDependencies:
       unocss: '>=66.0.0'
 
@@ -9192,7 +9195,7 @@ snapshots:
 
   '@skiyee/ucv@0.1.2': {}
 
-  '@skiyee/ui-preset@0.0.4(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))':
+  '@skiyee/ui-preset@0.0.5(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))':
     dependencies:
       '@skiyee/unocss-preset-miniapp': 0.0.4(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))
       '@unocss/core': 66.0.0
@@ -9201,11 +9204,11 @@ snapshots:
 
   '@skiyee/ui-resolver@0.0.2': {}
 
-  '@skiyee/uni-ui@0.1.1(@skiyee/ui-preset@0.0.4(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))))(vue@3.5.15(typescript@5.7.2))':
+  '@skiyee/uni-ui@0.1.1(@skiyee/ui-preset@0.0.5(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))))(vue@3.5.15(typescript@5.7.2))':
     dependencies:
       '@iconify-json/lucide': 1.2.59
       '@skiyee/ucv': 0.1.2
-      '@skiyee/ui-preset': 0.0.4(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))
+      '@skiyee/ui-preset': 0.0.5(unocss@66.3.3(postcss@8.4.49)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))
       '@standard-schema/spec': 1.0.0
       vue: 3.5.15(typescript@5.7.2)
 
