@@ -77,7 +77,7 @@ console.log('index')
       </text>
     </view>
     <view class="mt-4 text-center">
-      <SkButton color="brand">
+      <SkButton color="success">
         UI组件按钮
       </SkButton>
     </view>
