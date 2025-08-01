@@ -9,7 +9,7 @@ const customTabbarEnable
 
 /** tabbarList 里面的 path 从 pages.config.ts 得到 */
 const tabbarList = _tabBarList.map(item => ({ ...item, path: `/${item.pagePath}` }))
-function selectTabBar({ value: index }: { value: number }) {
+function selectTabBar(index: number) {
   const url = tabbarList[index].path
   tabbarStore.setCurIdx(index)
   if (cacheTabbarEnable) {
@@ -32,37 +32,32 @@ onLoad(() => {
     },
   })
 })
+
+// const list: TM.TABBAR_ITEM_INFO[] = [
+//   { title: '首页', icon: 'home-smile-2-line', selectedIcon: 'home-smile-2-fill', dotType: 'dot' },
+//   { title: '分类', icon: 'drive-line', selectedIcon: 'drive-fill' },
+//   { title: '购物车', icon: 'shopping-basket-line', selectedIcon: 'shopping-basket-fill' },
+//   { title: '统计', icon: 'bar-chart-2-line', selectedIcon: 'bar-chart-2-fill', dotLabel: '99+' },
+//   { title: '我的', icon: 'group-line', selectedIcon: 'group-fill' },
+// ]
+const list = computed(() => {
+  return tabbarList.map(item => ({
+    ...item,
+    title: item.text,
+  }))
+})
 </script>
 
 <template>
-  <wd-tabbar
+  <tm-tabbar
     v-if="customTabbarEnable"
-    v-model="tabbarStore.curIdx"
-    bordered
-    safe-area-inset-bottom
-    placeholder
-    fixed
+    :list="list"
+    :out-index="tabbarStore.curIdx"
+    color="rgba(0,0,0,0.64)"
+    out-bg-color="#ffffff"
+    out-icon-color="#16ee9c"
+    position="fixed"
+    selected-color="#000000"
     @change="selectTabBar"
-  >
-    <block v-for="(item, idx) in tabbarList" :key="item.path">
-      <wd-tabbar-item v-if="item.iconType === 'uiLib'" :title="item.text" :icon="item.icon" />
-      <wd-tabbar-item
-        v-else-if="item.iconType === 'unocss' || item.iconType === 'iconfont'"
-        :title="item.text"
-      >
-        <template #icon>
-          <view
-            h-40rpx
-            w-40rpx
-            :class="[item.icon, idx === tabbarStore.curIdx ? 'is-active' : 'is-inactive']"
-          />
-        </template>
-      </wd-tabbar-item>
-      <wd-tabbar-item v-else-if="item.iconType === 'local'" :title="item.text">
-        <template #icon>
-          <image :src="item.icon" h-40rpx w-40rpx />
-        </template>
-      </wd-tabbar-item>
-    </block>
-  </wd-tabbar>
+  />
 </template>

@@ -234,6 +234,8 @@ importers:
         specifier: ^2.2.10
         version: 2.2.10(typescript@5.7.2)
 
+  src/uni_modules/tm-ui: {}
+
 packages:
 
   '@alova/adapter-uniapp@2.0.14':

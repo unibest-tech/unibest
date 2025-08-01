@@ -10,7 +10,6 @@
     "autoscan": true,
     "custom": {
       "^fg-(.*)": "@/components/fg-$1/fg-$1.vue",
-      "^wd-(.*)": "wot-design-uni/components/wd-$1/wd-$1.vue",
       "^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)": "z-paging/components/z-paging$1/z-paging$1.vue"
     }
   },
@@ -30,16 +29,18 @@
         "selectedIconPath": "static/tabbar/homeHL.png",
         "pagePath": "pages/index/index",
         "text": "首页",
-        "icon": "home",
-        "iconType": "uiLib"
+        "iconType": "uiLib",
+        "icon": "home-smile-2-line",
+        "selectedIcon": "home-smile-2-fill"
       },
       {
         "iconPath": "static/tabbar/example.png",
         "selectedIconPath": "static/tabbar/exampleHL.png",
         "pagePath": "pages/about/about",
         "text": "关于",
-        "icon": "i-carbon-code",
-        "iconType": "unocss"
+        "iconType": "uiLib",
+        "icon": "group-line",
+        "selectedIcon": "group-fill"
       }
     ]
   },
