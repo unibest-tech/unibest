@@ -5,6 +5,7 @@ import { requestInterceptor } from './http/interceptor'
 import { routeInterceptor } from './router/interceptor'
 
 import store from './store'
+import tmUi from './uni_modules/tm-ui'
 import '@/style/index.scss'
 import 'virtual:uno.css'
 
@@ -14,6 +15,7 @@ export function createApp() {
   app.use(routeInterceptor)
   app.use(requestInterceptor)
   app.use(VueQueryPlugin)
+  app.use(tmUi)
 
   return {
     app,

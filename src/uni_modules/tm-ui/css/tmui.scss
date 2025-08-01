@@ -1,0 +1,748 @@
+.uni-input-input[type="password"]::-ms-reveal {
+	display: none;
+}
+.tableHeader .uni-scroll-view::-webkit-scrollbar,
+.tableHeader .uni-scroll-view::-webkit-scrollbar {
+	display: none;
+}
+.safe-height {
+	height: var(--window-bottom);
+}
+.safe-top {
+	height: var(--window-top);
+}
+
+.safe-statusbar {
+	height: var(--status-bar-height);
+}
+
+.blur {
+	backdrop-filter: blur(10px);
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.pointer:hover {
+	opacity: 0.7;
+}
+
+
+
+// 溢出隐藏。
+.overflow {
+	overflow: hidden;
+}
+
+
+.overflow-x {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.overflow-y {
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+
+$v_position: (
+				relative: relative,
+				absolute: absolute,
+				fixed: fixed,
+				sticky: sticky
+);
+
+@each $name,
+$key in $v_position {
+	.#{$name} {
+		position: $key !important;
+	}
+}
+
+
+.fulled-height {
+	display: flex;
+	align-items: stretch;
+}
+
+
+.clear {
+	clear: both;
+}
+
+.fulled {
+	width: 100%;
+	display: block;
+}
+
+.fulled-height {
+	height: 100%;
+	display: block;
+}
+
+.gray-100 {
+	filter: grayscale(100%);
+}
+
+.gray {
+	filter: grayscale(25%);
+}
+
+.d-inline-block {
+	display: inline-block !important;
+}
+
+.d-block {
+	display: block;
+}
+
+// 元素内联对齐 。vertical-align:top,middle,bottom
+@each $name,
+$key in (top: top, middle: middle, bottom: bottom) {
+	.vertical-align-#{$name} {
+		vertical-align: $key;
+	}
+}
+
+.wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+// 元素内联对齐 。vertical-align:top,middle,bottom
+@each $name,
+$key in (top: top, middle: middle, bottom: bottom) {
+	.vertical-align-#{$name} {
+		vertical-align: $key;
+	}
+}
+
+
+@for $i from 0 through 26 {
+	.zIndex-#{$i} {
+		z-index: #{$i * 1};
+	}
+
+	.zIndex-n#{$i} {
+		z-index: #{$i * 4};
+	}
+}
+
+// 文本缩略。
+
+@mixin text-overflow($width: 100%, $display: block, $space: nowrap) {
+	width: $width;
+	display: $display;
+	white-space: $space;
+	overflow: hidden;
+
+}
+
+.text-overflow {
+	@include text-overflow();
+	text-overflow: ellipsis;
+}
+
+// 多行文本缩略。text-overflow-行：数字
+@for $i from 1 to 6 {
+	.text-overflow-#{$i} {
+		@include text-overflow(100%, -webkit-box, inherit);
+		-webkit-line-clamp: $i;
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
+	}
+}
+
+
+// 删除线.
+.text-delete {
+	text-decoration: line-through;
+}
+
+// 下划线
+.text-underline {
+	text-decoration: underline;
+}
+
+// 文本大小 。text-size-xs大小名称,xxs,xs,s,n,g,lg,xl
+@each $name,
+$key in (xxs: 20rpx, xs: 22rpx, s: 24rpx, m: 28rpx, n: 30rpx, g: 34rpx, lg: 36rpx, xl: 40rpx) {
+
+	.text-size-#{$name} {
+		font-size: $key;
+	}
+}
+
+// 文本加粗text-weight-s,n,b
+@each $name,
+$key in (s: 100, n: 400, b: 700) {
+	.text-weight-#{$name} {
+		font-weight: $key;
+	}
+}
+
+// 文本对齐 。text-align-left,right,center
+@each $name,
+$key in (left: left, right: right, center: center) {
+	.text-align-#{$name} {
+		text-align: $key;
+	}
+}
+
+// 圆角半径
+
+// 圆角说明 round-方向-大小。
+// tl，顶左，tr顶右。bt底左，br底右。a全部。t:顶左和顶右，b:底左和底右，l:顶左和底左，r:顶右，底右。
+@each $name,
+$key in (tl: 'tl', tr: 'tr', bl: 'bl', br: 'br', a: 'a', t: 't', b: 'b', l: 'l', r: 'r') {
+	@for $i from 0 to 26 {
+		.round-#{$name}-#{$i} {
+			@if $key=='tl' {
+				border-top-left-radius: #{$i * 4}rpx !important;
+			}
+
+			@if $key=='tr' {
+				border-top-right-radius: #{$i * 4}rpx !important;
+			}
+
+			@if $key=='bl' {
+				border-bottom-left-radius: #{$i * 4}rpx !important;
+			}
+
+			@if $key=='br' {
+				border-bottom-right-radius: #{$i * 4}rpx !important;
+			}
+
+			@if $key=='t' {
+				border-top-left-radius: #{$i * 4}rpx !important;
+				border-top-right-radius: #{$i * 4}rpx !important;
+			}
+
+			@if $key=='b' {
+				border-bottom-left-radius: #{$i * 4}rpx !important;
+				border-bottom-right-radius: #{$i * 4}rpx !important;
+			}
+
+			@if $key=='l' {
+				border-top-left-radius: #{$i * 4}rpx !important;
+				border-bottom-left-radius: #{$i * 4}rpx !important;
+			}
+
+			@if $key=='r' {
+				border-top-right-radius: #{$i * 4}rpx !important;
+				border-bottom-right-radius: #{$i * 4}rpx !important;
+			}
+
+			@if $key=='a' {
+				border-radius: #{$i * 4}rpx !important;
+			}
+		}
+	}
+}
+
+// 从0-100的圆角round-数字
+@for $i from 0 through 26 {
+	.round-#{$i} {
+		border-radius: #{$i * 4}rpx;
+	}
+}
+
+// 50%的半圆角rounded圆角50%
+.rounded {
+	border-radius: 50% !important;
+}
+
+// 透明度opacity-[1-10]
+@for $i from 0 to 11 {
+	.opacity-#{$i} {
+		@if $i>0 and $i<10 {
+			opacity: $i / 10;
+		}
+
+		@if $i==0 {
+			opacity: 0;
+		}
+
+		@if $i==10 {
+			opacity: 1;
+		}
+	}
+}
+
+.shadow {
+	box-shadow: 0 2rpx 12rpx rgba($color: rgba(0, 0, 0, 1), $alpha: 0.08);
+}
+
+@for $i from 0 to 26 {
+	.shadow-#{$i} {
+		box-shadow: 0 #{$i * 2}rpx #{$i * 2+10}rpx rgba($color: rgba(0, 0, 0, 1), $alpha: 0.08);
+	}
+}
+
+
+// 添加边线 最大5
+@for $i from 0 to 6 {
+	@if $i==0 {
+		.border-0 {
+			border: solid 0 #f5f5f5 !important;
+		}
+
+		.border-0-bk {
+			border: solid 0 #282828 !important;
+		}
+
+		.border {
+			border: solid 2rpx #f5f5f5 !important;
+		}
+
+		.border-bk {
+			border: solid 2rpx #282828 !important;
+		}
+	}
+
+	@if $i>0 {
+		.border-#{$i} {
+			border: solid #{$i * 2}px #f5f5f5 !important;
+		}
+
+		.border-#{$i}-bk {
+			border: solid #{$i * 2}px #f5f5f5 !important;
+		}
+	}
+}
+
+// 边线格式1：border-方向t,r,l,b-宽度
+@each $name,
+$key in (l: 'left', r: 'right', t: 'top', b: 'bottom', a: 'a') {
+	@for $i from 1 to 6 {
+		.border-#{$name}-#{$i} {
+			@if $key=='a' {
+				border: solid #{$i * 2}rpx opacify($color: #f5f5f5, $amount: 1) !important;
+			}
+
+			@if $key !='a' {
+				border-#{$key}: solid #{$i * 2}rpx opacify($color: #f5f5f5, $amount: 1) !important;
+			}
+		}
+
+		.border-#{$name}-#{$i}-bk {
+			@if $key=='a' {
+				border: solid #{$i * 2}rpx rgba($color: #282828, $alpha: 1) !important;
+			}
+
+			@if $key !='a' {
+				border-#{$key}: solid #{$i * 2}rpx rgba($color: #282828, $alpha: 1) !important;
+			}
+		}
+	}
+}
+
+// 内间距。p[a,t,r,b,l,x,y]如：pa表示所有边距，px:左右，py:上下,pr:右边距
+@each $name,
+$key in (a: 'padding', t: 'padding-top', r: 'padding-right', b: 'padding-bottom', l: 'padding-left', x: 'x', y: 'y') {
+	@for $i from 0 to 26 {
+		@if $key !='x' and $key !='y' {
+			.p#{$name}-#{$i} {
+				#{$key}: #{$i}rpx;
+			}
+		}
+
+		@if $key=='x' {
+			.px-#{$i} {
+				padding-left: #{$i}rpx;
+				padding-right: #{$i}rpx;
+			}
+		}
+
+		@if $key=='y' {
+			.py-#{$i} {
+				padding-top: #{$i}rpx;
+				padding-bottom: #{$i}rpx;
+			}
+		}
+	}
+
+	@for $i from 1 to 26 {
+		@if $key !='x' and $key !='y' {
+			.p#{$name}-n#{$i} {
+				#{$key}: #{$i * 4}rpx;
+			}
+		}
+
+		@if $key=='x' {
+			.px-n#{$i} {
+				padding-left: #{$i * 4}rpx;
+				padding-right: #{$i * 4}rpx;
+			}
+		}
+
+		@if $key=='y' {
+			.py-n#{$i} {
+				padding-top: #{$i * 4}rpx;
+				padding-bottom: #{$i * 4}rpx;
+			}
+		}
+	}
+}
+
+// 外间距。m[a,t,r,b,l,x,y]如：ma表示所有外边距，mx:左右，my:上下,mr:右边距
+@each $name,
+$key in (a: 'margin', t: 'margin-top', r: 'margin-right', b: 'margin-bottom', l: 'margin-left', x: 'x', y: 'y') {
+	@for $i from 0 to 26 {
+		@if $key !='x' and $key !='y' {
+			.m#{$name}-#{$i} {
+				#{$key}: #{$i}rpx;
+			}
+
+			@if $key !='margin' {
+				.m#{$name}--#{$i} {
+					#{$key}: -#{$i}rpx;
+				}
+			}
+		}
+
+		@if $key=='x' {
+			.mx-#{$i} {
+				margin-left: #{$i}rpx;
+				margin-right: #{$i}rpx;
+			}
+		}
+
+		@if $key=='y' {
+			.my-#{$i} {
+				margin-top: #{$i}rpx;
+				margin-bottom: #{$i}rpx;
+			}
+		}
+	}
+
+	@for $i from 1 to 26 {
+		@if $key !='x' and $key !='y' {
+			.m#{$name}-n#{$i} {
+				#{$key}: #{$i * 4}rpx;
+			}
+
+			@if $key !='margin' {
+				.m#{$name}--n#{$i} {
+					#{$key}: -#{$i * 4}rpx;
+				}
+			}
+		}
+
+		@if $key=='x' {
+			.mx-n#{$i} {
+				margin-left: #{$i * 4}rpx;
+				margin-right: #{$i * 4}rpx;
+			}
+		}
+
+		@if $key=='y' {
+			.my-n#{$i} {
+				margin-top: #{$i * 4}rpx;
+				margin-bottom: #{$i * 4}rpx;
+			}
+		}
+	}
+}
+
+// 位置。
+@each $name,
+$key in (t: 'top', r: 'right', b: 'bottom', l: 'left') {
+	@for $i from 0 to 26 {
+		.#{$name}-#{$i} {
+			#{$key}: #{$i}rpx;
+		}
+
+		.#{$name}--#{$i} {
+			#{$key}: -#{$i}rpx;
+		}
+	}
+
+	@for $i from 1 to 26 {
+		.#{$name}-n#{$i} {
+			#{$key}: #{$i * 4}rpx;
+		}
+
+		.#{$name}--n#{$i} {
+			#{$key}: -#{$i * 4}rpx;
+		}
+	}
+}
+
+.grid{
+	display: grid !important;
+}
+
+@for $i from 1 to 13 {
+	.grid-col-#{$i} {
+		grid-template-columns: repeat(#{$i * 1},1fr);
+	}
+}
+@for $i from 1 to 26 {
+	.gap-#{$i} {
+		gap: #{$i * 2}rpx;
+	}
+	.gap-col-#{$i} {
+		grid-column-gap: #{$i * 2}rpx;
+	}
+	.gap-row-#{$i} {
+		grid-row-gap: #{$i * 2}rpx;
+	}
+}
+
+
+// Flex辅助。
+@mixin display-flex($justify, $items, $content) {
+	justify-content: $justify !important;
+	align-items: $items !important;
+	align-content: $content;
+	display: flex !important;
+}
+
+// 布局。flex-top-start,flex-top-center,flex-top-end,flex-start,flex-end,flex-center,flex-between,flex-around
+// flex-end-left,flex-end-center,flex-end-right
+.flex {
+	display: flex !important;
+}
+
+
+
+.flex-col {
+	flex-direction: column !important;
+}
+
+.flex-wrap {
+	flex-flow: row wrap !important;
+}
+
+.flex-shrink {
+	flex-shrink: 0 !important;
+}
+
+.flex-row {
+	flex-direction: row !important;
+}
+
+.flex-reverse {
+	flex-direction: row-reverse !important;
+}
+//row模式下，上左对齐
+.flex-row-top-start {
+	@include display-flex(flex-start, flex-start, center);
+}
+
+//row模式下，上中对齐
+.flex-row-top-center {
+	@include display-flex(center, flex-start, center);
+}
+
+//row模式下，上右对齐
+.flex-row-top-end {
+	@include display-flex(flex-end, flex-start, center);
+}
+
+//row模式下，中左对齐
+.flex-row-center-start {
+	@include display-flex(flex-start, center, center);
+}
+
+//row模式下，中中对齐
+.flex-row-center-center {
+	@include display-flex(center, center, center);
+}
+
+//row模式下，上右对齐
+.flex-row-center-end {
+	@include display-flex(flex-end, center, center);
+}
+
+//row模式下，下左对齐
+.flex-row-bottom-start {
+	@include display-flex(flex-start, flex-end, center);
+}
+
+//row模式下，下中对齐
+.flex-row-bottom-center {
+	@include display-flex(center, flex-end, center);
+}
+
+//row模式下，下右对齐
+.flex-row-bottom-end {
+	@include display-flex(flex-end, flex-end, center);
+}
+
+//上下居中，两边对齐。
+.flex-row-center-between {
+	@include display-flex(space-between, center, center);
+}
+
+//--------
+//col模式下，上左对齐
+.flex-col-top-start {
+	@include display-flex(flex-start, flex-start, center);
+}
+
+//col模式下，上中对齐
+.flex-col-top-center {
+	@include display-flex(flex-start, center, center);
+}
+
+//col模式下，上右对齐
+.flex-col-top-end {
+	@include display-flex(flex-start, flex-end, center);
+}
+
+//col模式下，中左对齐
+.flex-col-center-start {
+	@include display-flex(center, flex-start, center);
+}
+
+//col模式下，中中对齐
+.flex-col-center-center {
+	@include display-flex(center, center, center);
+}
+
+//col模式下，上右对齐
+.flex-col-center-end {
+	@include display-flex(center, flex-end, center);
+}
+
+//col模式下，下左对齐
+.flex-col-bottom-start {
+	@include display-flex(flex-end, flex-start, center);
+}
+
+//col模式下，下中对齐
+.flex-col-bottom-center {
+	@include display-flex(flex-end, center, center);
+}
+
+//col模式下，下右对齐
+.flex-col-bottom-end {
+	@include display-flex(flex-end, flex-end, center);
+}
+
+//-----------
+
+// row居中左对齐
+.flex-start {
+	@include display-flex(flex-start, center, center);
+}
+
+// row居中右对齐
+.flex-end {
+	@include display-flex(flex-end, center, center);
+}
+
+// col,row上下左右居中对齐
+.flex-center {
+	@include display-flex(center, center, center);
+}
+
+// col,row两端对齐
+.flex-between {
+	justify-content: space-between;
+}
+
+//横向的内容在col模式一睥100%宽，与flex-1中的flex-row是功能一样。
+.flex-col-full {
+	flex-direction: column;
+	align-items: stretch;
+}
+
+// col,row居中等分对齐
+.flex-around {
+	justify-content: space-around;
+}
+
+.flex-row-baseline-start {
+	justify-content: flex-start !important;
+	align-items: baseline !important;
+	align-content: center;
+	display: flex !important;
+}
+.flex-row-baseline-center {
+	justify-content: center !important;
+	align-items: baseline !important;
+	align-content: center;
+	display: flex !important;
+}
+.flex-row-baseline-end {
+	justify-content: flex-end !important;
+	align-items: baseline !important;
+	align-content: center;
+	display: flex !important;
+}
+
+@for $i from 0 through 12 {
+	.flex-#{$i} {
+		flex-grow: $i !important;
+	}
+}
+
+$colorsDefault: (
+				'grey': #9e9e9e,
+				'black': #000000,
+				'white': #ffffff,
+				'lighten-5': #fafafa,
+				'lighten-4': #f5f5f5,
+				'lighten-3': #eeeeee,
+				'lighten-2': #e0e0e0,
+				'lighten-1': #bdbdbd,
+				'darken-1': #757575,
+				'darken-2': #616161,
+				'darken-3': #424242,
+				'darken-4': #212121,
+				'darken-5': #131313,
+				'darken-6': #0a0a0a
+);
+$colors: (
+				'red': #f44336,
+				'pink': #e91e63,
+				'purple': #9c27b0,
+				'deep-purple': #673ab7,
+				'indigo': #3f51b5,
+				'blue': #2196f3,
+				'light-blue': #03a9f4,
+				'cyan': #00bcd4,
+				'teal': #009688,
+				'green': #4caf50,
+				'light-green': #8bc34a,
+				'lime': #cddc39,
+				'yellow': #ffeb3b,
+				'amber': #ffc107,
+				'orange': #ff9800,
+				'deep-orange': #ff5722,
+				'brown': #795548,
+				'blue-grey': #607d8b
+);
+
+// 文本颜色。text-颜色名
+@each $name,
+$color in $colors {
+	.text-#{$name} {
+		color: $color !important;
+	}
+
+	.#{$name} {
+		background-color: $color;
+	}
+}
+
+@each $name,
+$color in $colorsDefault {
+	.text-#{$name} {
+		color: $color !important;
+	}
+
+	.#{$name} {
+		background-color: $color;
+	}
+}

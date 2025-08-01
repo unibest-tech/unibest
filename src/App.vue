@@ -17,6 +17,10 @@ onHide(() => {
 </script>
 
 <style lang="scss">
+/* 图标必须 */
+@import url(@/uni_modules/tm-ui/css/remixicon.min.css);
+/* 自定预处理类，可选 */
+@import url(@/uni_modules/tm-ui/css/tmui.css);
 swiper,
 scroll-view {
   flex: 1;
