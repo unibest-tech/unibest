@@ -56,7 +56,7 @@ export default defineConfig({
   theme: {
     colors: {
       /** 主题色，用法如: text-primary */
-      primary: 'var(--wot-color-theme,#0957DE)',
+      primary: '#0957DE',
     },
     fontSize: {
       /** 提供更小号的字体，用法如：text-2xs */
