@@ -1,3 +1,4 @@
+import presetSkiyeeUI from '@skiyee/ui-preset'
 // https://www.npmjs.com/package/@uni-helper/unocss-preset-uni
 import { presetUni } from '@uni-helper/unocss-preset-uni'
 import {
@@ -26,6 +27,7 @@ export default defineConfig({
     }),
     // 支持css class属性化
     presetAttributify(),
+    presetSkiyeeUI(),
   ],
   transformers: [
     // 启用指令功能：主要用于支持 @apply、@screen 和 theme() 等 CSS 指令

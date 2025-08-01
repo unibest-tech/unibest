@@ -11,6 +11,8 @@
 </route>
 
 <script lang="ts" setup>
+import SkButton from '@skiyee/uni-ui/sk-button.vue'
+
 defineOptions({
   name: 'Home',
 })
@@ -77,13 +79,13 @@ console.log('index')
       </text>
     </view>
     <view class="mt-4 text-center">
-      <wd-button type="primary">
+      <SkButton>
         UI组件按钮
-      </wd-button>
+      </SkButton>
     </view>
     <view class="mt-4 text-center">
       UI组件官网：<text class="text-green-500">
-        https://wot-design-uni.cn
+        https://skiyee-ui.netlify.app/
       </text>
     </view>
   </view>

@@ -70,6 +70,9 @@ importers:
       '@dcloudio/uni-quickapp-webview':
         specifier: 3.0.0-4060620250520001
         version: 3.0.0-4060620250520001(postcss@8.4.49)(rollup@4.41.1)(vue@3.5.15(typescript@5.7.2))
+      '@skiyee/uni-ui':
+        specifier: ^0.1.1
+        version: 0.1.1(@skiyee/ui-preset@0.0.4(unocss@65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))))(vue@3.5.15(typescript@5.7.2))
       '@tanstack/vue-query':
         specifier: ^5.62.16
         version: 5.62.16(vue@3.5.15(typescript@5.7.2))
@@ -1556,6 +1559,9 @@ packages:
   '@iconify-json/carbon@1.2.4':
     resolution: {integrity: sha512-DhW2jjMVGwV0DLHc0cmDYohdtGxMra8UuwgjHrryPy+rQX4gXhJwCBBVP2h2UG/92AoRCTn7zUJve4WvY5MLYg==}
 
+  '@iconify-json/lucide@1.2.59':
+    resolution: {integrity: sha512-qHVs++9sGUxSNf8nJ0U/0UxHyVaut9TV4V7dc3i4K9jqxL/eg/sDpgKsX3+GrsWP3IwE8cARRgQHoLEb3Eru2Q==}
+
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
@@ -2115,6 +2121,38 @@ packages:
   '@sinonjs/fake-timers@8.1.0':
     resolution: {integrity: sha512-OAPJUAtgeINhh/TAlUID4QTs53Njm7xzddaVlEs/SXwgtiD1tW22zAB/W1wdqfrpmikgaWQ9Fw6Ws+hsiRm5Vg==}
 
+  '@skiyee/ucv@0.1.2':
+    resolution: {integrity: sha512-mAlBOTX+CwOAqdmtIxXRU+8pnW0IkisgDoNy6OFQnUxGy4rz3McC1uoDZ1XrbXiZhsDQeyJ5RzkShuxoJeexQQ==}
+
+  '@skiyee/ui-preset@0.0.4':
+    resolution: {integrity: sha512-R4vLAcZRz1GBREjXITQoupn12o9S1TX513Xr0u1JPmhcJu9pushWkjwkHJCqNLCzbuisYGvW563kEU7UFuO/Yg==}
+    peerDependencies:
+      unocss: '>=66.0.0'
+
+  '@skiyee/uni-ui@0.1.1':
+    resolution: {integrity: sha512-iLMD8vgtuvFcgOYzB4EFz5uuQFp7/+RhQicXHl7SlzWtjY/47JWNSExfQsXdsdEzoorhA+DKcbbGw1E0bwKUvw==}
+    peerDependencies:
+      '@skiyee/ui-preset': '>=0.0.3'
+      arktype: '>=2.0.0'
+      valibot: '>=1.0.0'
+      vue: '>=3.4.21'
+      zod: '>=3.24.0'
+    peerDependenciesMeta:
+      arktype:
+        optional: true
+      valibot:
+        optional: true
+      zod:
+        optional: true
+
+  '@skiyee/unocss-preset-miniapp@0.0.4':
+    resolution: {integrity: sha512-abkiLI6UppJ4/WpWrtnj9EIVl2zqZcxGJwUK9ppff/VRFSAC12oaUG2QuipWdoPesbDCGIAnrMQ8TfVJxmyhOQ==}
+    peerDependencies:
+      unocss: '>=66.0.0'
+
+  '@standard-schema/spec@1.0.0':
+    resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
+
   '@stylistic/eslint-plugin@5.0.0-beta.5':
     resolution: {integrity: sha512-hYoTE1AuPKkF8gN6nwJVnBovUEkt3UGiE3zu8nNmFi3yw7F36l1/tU/VRg16CZC804rnAhUwsYTHqKnAPqICxg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -2443,6 +2481,9 @@ packages:
   '@unocss/core@65.4.2':
     resolution: {integrity: sha512-VmXy5D25por+pt9LBlKZ3gk4rOE5ldm80MyVOEnLcpaFb9LqB0g/8qUU9/Dk3TSA+ZPeoGm53Juo0p8LMFIigA==}
 
+  '@unocss/core@66.0.0':
+    resolution: {integrity: sha512-PdVbSMHNDDkr++9nkqzsZRAkaU84gxMTEgYbqI7dt2p1DXp/5tomVtmMsr2/whXGYKRiUc0xZ3p4Pzraz8TcXA==}
+
   '@unocss/core@66.1.2':
     resolution: {integrity: sha512-mN9h1hHEuhDcdbI4z74o7UnxlBZYVsJpYcdC1YLWBKROcLYTkuyZ7hgBzpo1FBNox2Bt3JnrSinVDmc44Bxjow==}
 
@@ -2518,6 +2559,10 @@ packages:
 
   '@unocss/rule-utils@65.4.2':
     resolution: {integrity: sha512-OdMSJZiZUr8XmLo3Bz3Wrw1nZLT1nTPnPOV8gdi4vZ+2RgCChua9o8Dz4IyeQ7mMhLXoqHIUpJ7jE5Nv+Uz1Fw==}
+    engines: {node: '>=14'}
+
+  '@unocss/rule-utils@66.0.0':
+    resolution: {integrity: sha512-UJ51YHbwxYTGyj35ugsPlOT4gaa7tCbXdywZ3m5Nn0JgywwIqGmBFyiN9ZjHBHfJuDxmmPd6lxojoBscih/WMQ==}
     engines: {node: '>=14'}
 
   '@unocss/rule-utils@66.1.2':
@@ -8478,6 +8523,10 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
+  '@iconify-json/lucide@1.2.59':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify/types@2.0.0': {}
 
   '@iconify/utils@2.3.0':
@@ -9185,6 +9234,30 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 1.8.6
 
+  '@skiyee/ucv@0.1.2': {}
+
+  '@skiyee/ui-preset@0.0.4(unocss@65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))':
+    dependencies:
+      '@skiyee/unocss-preset-miniapp': 0.0.4(unocss@65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))
+      '@unocss/core': 66.0.0
+      '@unocss/rule-utils': 66.0.0
+      unocss: 65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))
+
+  '@skiyee/uni-ui@0.1.1(@skiyee/ui-preset@0.0.4(unocss@65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))))(vue@3.5.15(typescript@5.7.2))':
+    dependencies:
+      '@iconify-json/lucide': 1.2.59
+      '@skiyee/ucv': 0.1.2
+      '@skiyee/ui-preset': 0.0.4(unocss@65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))
+      '@standard-schema/spec': 1.0.0
+      vue: 3.5.15(typescript@5.7.2)
+
+  '@skiyee/unocss-preset-miniapp@0.0.4(unocss@65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2)))':
+    dependencies:
+      '@unocss/core': 66.0.0
+      unocss: 65.4.2(postcss@8.4.49)(rollup@4.41.1)(vite@5.2.8(@types/node@20.17.9)(sass@1.77.8)(terser@5.36.0))(vue@3.5.15(typescript@5.7.2))
+
+  '@standard-schema/spec@1.0.0': {}
+
   '@stylistic/eslint-plugin@5.0.0-beta.5(eslint@9.29.0(jiti@2.4.2))':
     dependencies:
       '@eslint-community/eslint-utils': 4.7.0(eslint@9.29.0(jiti@2.4.2))
@@ -9626,6 +9699,8 @@ snapshots:
 
   '@unocss/core@65.4.2': {}
 
+  '@unocss/core@66.0.0': {}
+
   '@unocss/core@66.1.2': {}
 
   '@unocss/core@66.2.0': {}
@@ -9763,6 +9838,11 @@ snapshots:
   '@unocss/rule-utils@65.4.2':
     dependencies:
       '@unocss/core': 65.4.2
+      magic-string: 0.30.17
+
+  '@unocss/rule-utils@66.0.0':
+    dependencies:
+      '@unocss/core': 66.2.3
       magic-string: 0.30.17
 
   '@unocss/rule-utils@66.1.2':
