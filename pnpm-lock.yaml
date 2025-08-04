@@ -91,15 +91,15 @@ importers:
       pinia-plugin-persistedstate:
         specifier: 3.2.1
         version: 3.2.1(pinia@2.0.36(typescript@5.9.2)(vue@3.4.21(typescript@5.9.2)))
+      uview-plus:
+        specifier: ^3.4.69
+        version: 3.4.69
       vue:
         specifier: 3.4.21
         version: 3.4.21(typescript@5.9.2)
       vue-i18n:
         specifier: ^9.14.5
         version: 9.14.5(vue@3.4.21(typescript@5.9.2))
-      wot-design-uni:
-        specifier: ^1.9.1
-        version: 1.11.1(vue@3.4.21(typescript@5.9.2))
       z-paging:
         specifier: 2.8.7
         version: 2.8.7
@@ -4052,6 +4052,9 @@ packages:
   globrex@0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
 
+  good-listener@1.2.2:
+    resolution: {integrity: sha512-goW1b+d9q/HIwbVYZzZ6SsTr4IgE+WA44A0GmPIQstuOrgsFcT7VEJ48nmr9GaRtNu0XTKacFLGnBPAM6Afouw==}
+
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
@@ -6188,9 +6191,9 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
-  uview-plus@3.4.41:
-    resolution: {integrity: sha512-0c2KeJmXO4Rez2nERb4yi2fwydRT2pzBcjDlh9DkLaQ39VJD9zpv8NSN0mWAFEgc8U+hykXHt0DDr8yqaXAxbg==}
-    engines: {HBuilderX: ^3.1.0}
+  uview-plus@3.4.69:
+    resolution: {integrity: sha512-0cNcCbOd6hmvQslHtkhh+bYBVY07oEK5BMdlqeSPJj/JTmgPbwbPaoKJTpgOmYWBf6R9qyCrDIHI/KLg2BtYJw==}
+    engines: {HBuilderX: ^3.1.0, uni-app: ^4.66, uni-app-x: ''}
 
   v8-to-istanbul@8.1.1:
     resolution: {integrity: sha512-FGtKtv3xIpR6BYhvgH8MI/y78oT7d8Au3ww4QIxymrCtZEh5b8gCw2siywE+puhEmuWKDtmfrvF5UlB298ut3w==}
@@ -6329,12 +6332,6 @@ packages:
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
-
-  wot-design-uni@1.11.1:
-    resolution: {integrity: sha512-Pjfnz+4v0XDWvVJ/mkgVUzneOpB/WR0H+iD+Wt0hbELopuZhA1DzFvUsRA90cP/7sPsKiwiwKl3aXecG++4SkQ==}
-    engines: {HBuilderX: ^3.8.7}
-    peerDependencies:
-      vue: '>=3.2.47'
 
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
@@ -13972,7 +13969,7 @@ snapshots:
 
   utils-merge@1.0.1: {}
 
-  uview-plus@3.4.41:
+  uview-plus@3.4.69:
     dependencies:
       clipboard: 2.0.11
       dayjs: 1.11.10
@@ -14093,10 +14090,6 @@ snapshots:
       isexe: 2.0.0
 
   word-wrap@1.2.5: {}
-
-  wot-design-uni@1.11.1(vue@3.4.21(typescript@5.9.2)):
-    dependencies:
-      vue: 3.4.21(typescript@5.9.2)
 
   wrap-ansi@7.0.0:
     dependencies:
