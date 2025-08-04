@@ -100,9 +100,6 @@ importers:
       vue-i18n:
         specifier: ^9.14.5
         version: 9.14.5(vue@3.4.21(typescript@5.9.2))
-      wot-design-uni:
-        specifier: ^1.9.1
-        version: 1.11.1(vue@3.4.21(typescript@5.9.2))
       z-paging:
         specifier: 2.8.7
         version: 2.8.7
@@ -6320,12 +6317,6 @@ packages:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
 
-  wot-design-uni@1.11.1:
-    resolution: {integrity: sha512-Pjfnz+4v0XDWvVJ/mkgVUzneOpB/WR0H+iD+Wt0hbELopuZhA1DzFvUsRA90cP/7sPsKiwiwKl3aXecG++4SkQ==}
-    engines: {HBuilderX: ^3.8.7}
-    peerDependencies:
-      vue: '>=3.2.47'
-
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
     engines: {node: '>=10'}
@@ -7286,6 +7277,8 @@ snapshots:
       '@clack/core': 0.5.0
       picocolors: 1.1.1
       sisteransi: 1.0.5
+
+  '@climblee/uv-ui@1.1.20': {}
 
   '@commitlint/cli@19.8.1(@types/node@20.19.9)(typescript@5.9.2)':
     dependencies:
@@ -14062,10 +14055,6 @@ snapshots:
       isexe: 2.0.0
 
   word-wrap@1.2.5: {}
-
-  wot-design-uni@1.11.1(vue@3.4.21(typescript@5.9.2)):
-    dependencies:
-      vue: 3.4.21(typescript@5.9.2)
 
   wrap-ansi@7.0.0:
     dependencies:
