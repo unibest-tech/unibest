@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import FgTabbar from './fg-tabbar/fg-tabbar.vue'
+import FgTabbar from '@/tabbar/index.vue'
 </script>
 
 <template>
