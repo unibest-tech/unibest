@@ -237,7 +237,9 @@ importers:
         specifier: ^2.2.10
         version: 2.2.12(typescript@5.9.2)
 
-  src/uni_modules/tm-ui: {}
+  src/uni_modules/uni-icons: {}
+
+  src/uni_modules/uni-scss: {}
 
 packages:
 

@@ -1,4 +1,3 @@
-import { tabbarStore } from '@/layouts/fg-tabbar/tabbar'
 /**
  * by 菲鸽 on 2024-03-06
  * 路由拦截，通常也是登录拦截
@@ -6,6 +5,7 @@ import { tabbarStore } from '@/layouts/fg-tabbar/tabbar'
  * 我这里应为大部分都可以随便进入，所以使用黑名单
  */
 import { useUserStore } from '@/store'
+import { tabbarStore } from '@/tabbar/store'
 import { needLoginPages as _needLoginPages, getLastPage, getNeedLoginPages } from '@/utils'
 
 // TODO Check
@@ -63,5 +63,15 @@ export const routeInterceptor = {
     uni.addInterceptor('reLaunch', navigateToInterceptor)
     uni.addInterceptor('redirectTo', navigateToInterceptor)
     uni.addInterceptor('switchTab', navigateToInterceptor)
+
+    // #ifdef H5
+    // 一个粗糙的实现方式，不满意可以自行修改：https://github.com/unibest-tech/unibest/issues/192
+    // H5环境路由拦截，监听hashchange事件
+    window.addEventListener('hashchange', () => {
+      // 获取当前路径
+      const currentPath = `/${window.location.hash.split('#/')[1]?.split('?')[0]}`
+      navigateToInterceptor.invoke({ url: currentPath })
+    })
+    // #endif
   },
 }

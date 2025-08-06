@@ -1,4 +1,5 @@
 import { pages, subPackages } from '@/pages.json'
+import { tabbarList } from '@/tabbar/config'
 import { isMpWeixin } from './platform'
 
 export function getLastPage() {
@@ -90,6 +91,23 @@ export function getAllPages(key = 'needLogin') {
   const result = [...mainPages, ...subPages]
   // console.log(`getAllPages by ${key} result: `, result)
   return result
+}
+
+export function isCurrentPageTabbar() {
+  const routeObj = currRoute()
+  return tabbarList.some(item => `/${item.pagePath}` === routeObj.path)
+}
+
+export function getCurrentPageI18nKey() {
+  const routeObj = currRoute()
+  const currPage = pages.find(page => `/${page.path}` === routeObj.path)
+  if (!currPage) {
+    console.warn('路由不正确')
+    return ''
+  }
+  console.log(currPage)
+  console.log(currPage.style.navigationBarTitleText)
+  return currPage.style.navigationBarTitleText
 }
 
 /**
