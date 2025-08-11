@@ -98,7 +98,7 @@ importers:
         specifier: ^1.22.1
         version: 1.22.1(@dcloudio/types@3.4.19)(vue@3.4.21(typescript@5.9.2))
       vue:
-        specifier: ^3.4.21
+        specifier: 3.4.21
         version: 3.4.21(typescript@5.9.2)
       z-paging:
         specifier: 2.8.7
