@@ -27,6 +27,20 @@ function gotoVueQuery() {
     url: '/pages/about/vue-query',
   })
 }
+function gotoSubPage() {
+  uni.navigateTo({
+    url: '/pages-sub/demo/index',
+  })
+}
+// uniLayout里面的变量通过 expose 暴露出来后可以在 onReady 钩子获取到（onLoad 钩子不行）
+const uniLayout = ref()
+onLoad(() => {
+  console.log('onLoad:', uniLayout.value) // onLoad: undefined
+})
+onReady(() => {
+  console.log('onReady:', uniLayout.value) // onReady: Proxy(Object)
+  console.log('onReady:', uniLayout.value.testUniLayoutExposedData) // onReady: testUniLayoutExposedData
+})
 </script>
 
 <template>
@@ -44,6 +58,11 @@ function gotoVueQuery() {
     <view class="text-center">
       <button type="primary" size="mini" class="w-160px" @click="gotoVueQuery">
         vue-query 示例页面
+      </button>
+    </view>
+    <view class="text-center">
+      <button type="primary" size="mini" class="w-160px" @click="gotoSubPage">
+        前往分包页面
       </button>
     </view>
     <view class="mt-6 text-center text-sm">
