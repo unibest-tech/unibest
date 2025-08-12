@@ -101,7 +101,8 @@ function getImageByIndex(index: number, item: { iconActive?: string, icon: strin
               <!-- 如：<wd-icon name="home" /> (https://wot-design-uni.cn/component/icon.html) -->
               <!-- 如：<uv-icon name="home" /> (https://www.uvui.cn/components/icon.html) -->
               <!-- 如：<sar-icon name="image" /> (https://sard.wzt.zone/sard-uniapp-docs/components/icon)(sar没有home图标^_^) -->
-              <sar-icon :name="item.icon" size="20" />
+              <!-- 如：<u-icon name="image" /> (https://uview-pro.netlify.app/components/icon.html) -->
+              <u-icon :name="item.icon" size="20" />
             </template>
             <template v-if="item.iconType === 'unocss' || item.iconType === 'iconfont'">
               <view :class="item.icon" class="text-20px" />

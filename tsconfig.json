@@ -14,7 +14,6 @@
       "@dcloudio/types",
       "@uni-helper/uni-types",
       "@types/wechat-miniprogram",
-      "sard-uniapp/global",
       "z-paging/types",
       "./src/typings.d.ts"
     ],

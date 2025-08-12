@@ -109,13 +109,13 @@ console.log('index')
     <!-- #endif -->
 
     <view class="mt-4 text-center">
-      <sar-button type="default">
+      <u-button type="primary" size="medium">
         UI组件按钮
-      </sar-button>
+      </u-button>
     </view>
-    <view class="mt-4 text-center">
+    <view class="mb-4 mt-4 text-center">
       UI组件官网：<text class="text-green-500">
-        https://sard.wzt.zone/sard-uniapp-docs/
+        https://uview-pro.anyup.cn/
       </text>
     </view>
   </view>
