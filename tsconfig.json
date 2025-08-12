@@ -13,7 +13,7 @@
     "types": [
       "@dcloudio/types",
       "@uni-helper/uni-types",
-      "@types/wechat-miniprogram",
+      "miniprogram-api-typings",
       "uview-plus/types",
       "z-paging/types",
       "./src/typings.d.ts"

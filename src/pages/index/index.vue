@@ -118,5 +118,6 @@ console.log('index')
         https://uiadmin.net/uview-plus
       </text>
     </view>
+    <view class="h-6" />
   </view>
 </template>
