@@ -118,5 +118,6 @@ console.log('index')
         https://uview-pro.anyup.cn/
       </text>
     </view>
+    <view class="h-6" />
   </view>
 </template>
