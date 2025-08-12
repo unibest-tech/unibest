@@ -118,5 +118,6 @@ console.log('index')
         https://skiyee-ui.netlify.app/
       </text>
     </view>
+    <view class="h-6" />
   </view>
 </template>
