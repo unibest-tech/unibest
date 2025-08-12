@@ -118,5 +118,6 @@ console.log('index')
         https://tmui.design (3.2.x)
       </text>
     </view>
+    <view class="h-6" />
   </view>
 </template>
