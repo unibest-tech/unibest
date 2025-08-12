@@ -118,5 +118,6 @@ console.log('index')
         https://sard.wzt.zone/sard-uniapp-docs/
       </text>
     </view>
+    <view class="h-6" />
   </view>
 </template>
