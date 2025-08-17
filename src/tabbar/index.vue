@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // 'i-carbon-code',
-import { http } from '@/http/http'
-import { customTabbarEnable, nativeTabbarNeedHide, tabbarCacheEnable } from './config'
+import { tabbarList as _tabbarList, customTabbarEnable, needHideNativeTabbar, tabbarCacheEnable } from './config'
 import { tabbarStore } from './store'
 
 // #ifdef MP-WEIXIN
@@ -11,14 +10,11 @@ defineOptions({
 })
 // #endif
 
-// #region 接口获取tabbar demo
-http.get('/foo').then((res) => {
-  console.log('接口获取tabbar demo', res)
-})
-// #endregion
-
 // TODO 1/2: 中间的鼓包tabbarItem的开关
 const BULGE_ENABLE = false
+/**
+ * 中间的鼓包tabbarItem的点击事件
+ */
 function handleClickBulge() {
   uni.showToast({
     title: '点击了中间的鼓包tabbarItem',
@@ -27,7 +23,7 @@ function handleClickBulge() {
 }
 
 /** tabbarList 里面的 path 从 pages.config.ts 得到 */
-const tabbarList = tabbarStore.tabbarList.map(item => ({ ...item, path: `/${item.pagePath}` }))
+const tabbarList = _tabbarList.map(item => ({ ...item, path: `/${item.pagePath}` }))
 if (BULGE_ENABLE) {
   if (tabbarList.length % 2 === 1) {
     console.error('tabbar 数量必须是偶数，否则样式很奇怪！！')
@@ -56,7 +52,7 @@ function handleClick(index: number) {
 }
 onLoad(() => {
   // 解决原生 tabBar 未隐藏导致有2个 tabBar 的问题
-  nativeTabbarNeedHide
+  needHideNativeTabbar
   && uni.hideTabBar({
     fail(err) {
       console.log('hideTabBar fail: ', err)
@@ -94,7 +90,7 @@ function getImageByIndex(index: number, item: { iconActive?: string, icon: strin
           <view v-if="item.isBulge" class="relative">
             <!-- 中间一个鼓包tabbarItem的处理 -->
             <view class="bulge">
-              <!-- TODO 2/2: 通常是一个图片，或者icon，点击触发业务逻辑 -->
+              <!-- TODO 2/2: 中间鼓包tabbarItem配置：通常是一个图片，或者icon，点击触发业务逻辑 -->
               <!-- 常见的是：扫描按钮、发布按钮、更多按钮等 -->
               <image class="mt-6rpx h-200rpx w-200rpx" src="/static/tabbar/scan.png" />
             </view>
