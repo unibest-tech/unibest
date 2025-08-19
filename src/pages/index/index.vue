@@ -11,9 +11,13 @@
 </route>
 
 <script lang="ts" setup>
+import { useThemeStore } from '@/store'
+
 defineOptions({
   name: 'Home',
 })
+
+const themeStore = useThemeStore()
 
 // 获取屏幕边界到安全区域距离
 let safeAreaInsets
