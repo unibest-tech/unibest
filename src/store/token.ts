@@ -155,7 +155,6 @@ export const useTokenStore = defineStore(
     const logout = async () => {
       try {
         await _logout()
-
         // 清除存储的过期时间
         uni.removeStorageSync('accessTokenExpireTime')
         uni.removeStorageSync('refreshTokenExpireTime')
@@ -261,7 +260,7 @@ export const useTokenStore = defineStore(
       logout,
 
       // 认证状态判断（最常用的）
-      hasValidLogin,
+      hasLogin: hasValidLogin,
 
       // 内部系统使用的方法
       refreshToken,
