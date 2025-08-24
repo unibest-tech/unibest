@@ -99,7 +99,7 @@ importers:
         version: 3.2.1(pinia@2.0.36(typescript@5.8.3)(vue@3.4.21(typescript@5.8.3)))
       vue:
         specifier: 3.4.21
-        version: 3.4.21(typescript@5.9.2)
+        version: 3.4.21(typescript@5.8.3)
       z-paging:
         specifier: 2.8.7
         version: 2.8.7
@@ -162,8 +162,8 @@ importers:
         specifier: 0.2.8
         version: 0.2.8(vite@5.2.8(@types/node@20.19.9)(sass@1.77.8)(terser@5.43.1))
       '@uni-helper/vite-plugin-uni-pages':
-        specifier: 0.2.29
-        version: 0.2.29(patch_hash=4fe569b1efb63b77285aa7a1f74bc8ab38ec55b95f46c286f775993f93f4c403)(vite@5.2.8(@types/node@20.19.9)(sass@1.77.8)(terser@5.43.1))
+        specifier: 0.3.0
+        version: 0.3.0(patch_hash=4fe569b1efb63b77285aa7a1f74bc8ab38ec55b95f46c286f775993f93f4c403)(vite@5.2.8(@types/node@20.19.9)(sass@1.77.8)(terser@5.43.1))
       '@uni-helper/vite-plugin-uni-platform':
         specifier: 0.0.5
         version: 0.0.5
@@ -1164,13 +1164,11 @@ packages:
   '@esbuild/darwin-arm64@0.20.2':
     resolution: {integrity: sha512-4J6IRT+10J3aJH3l1yzEg9y3wkTDgDk7TSDFX+wKFiWjqWp/iCfLIYzGyasx9l0SAFPT1HwSCR+0w/h1ES/MjA==}
     engines: {node: '>=12'}
-    cpu: [arm64]
     os: [darwin]
 
   '@esbuild/darwin-x64@0.20.2':
     resolution: {integrity: sha512-tBcXp9KNphnNH0dfhv8KYkZhjc+H3XBkF5DKtswJblV7KlT9EI2+jeA8DgBjp908WEuYll6pF+UStUCfEpdysA==}
     engines: {node: '>=12'}
-    cpu: [x64]
     os: [darwin]
 
   '@esbuild/freebsd-arm64@0.20.2':
@@ -1795,7 +1793,6 @@ packages:
 
   '@rollup/rollup-darwin-x64@4.46.2':
     resolution: {integrity: sha512-SSj8TlYV5nJixSsm/y3QXfhspSiLYP11zpfwp6G/YDXctf3Xkdnk4woJIF5VQe0of2OjzTt8EsxnJDCdHd2xMA==}
-    cpu: [x64]
     os: [darwin]
 
   '@rollup/rollup-freebsd-arm64@4.46.2':
@@ -6925,7 +6922,7 @@ snapshots:
 
   '@climblee/uv-ui@1.1.20': {}
 
-  '@commitlint/cli@19.8.1(@types/node@20.19.9)(typescript@5.9.2)':
+  '@commitlint/cli@19.8.1(@types/node@20.19.9)(typescript@5.8.3)':
     dependencies:
       '@commitlint/format': 19.8.1
       '@commitlint/lint': 19.8.1
@@ -8942,7 +8939,7 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  '@uni-helper/vite-plugin-uni-pages@0.2.29(patch_hash=4fe569b1efb63b77285aa7a1f74bc8ab38ec55b95f46c286f775993f93f4c403)(vite@5.2.8(@types/node@20.19.9)(sass@1.77.8)(terser@5.43.1))':
+  '@uni-helper/vite-plugin-uni-pages@0.3.0(patch_hash=4fe569b1efb63b77285aa7a1f74bc8ab38ec55b95f46c286f775993f93f4c403)(vite@5.2.8(@types/node@20.19.9)(sass@1.77.8)(terser@5.43.1))':
     dependencies:
       '@uni-helper/uni-env': 0.1.7
       '@vue/compiler-sfc': 3.4.21
