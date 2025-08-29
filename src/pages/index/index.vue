@@ -69,6 +69,28 @@ console.log('index')
       最好用的 uniapp 开发模板
     </view>
 
+    <view class="flex items-center justify-center gap-1">
+      <text class="text-base c-primary font-medium leading-none">
+        测试文案
+      </text>
+      <view class="h-32rpx w-32rpx flex items-center justify-center">
+        <image src="/static/images/Icon-Wrapper-1.png" mode="aspectFit" class="h-full w-full" />
+      </view>
+    </view>
+    <view class="mb-20 flex items-center rounded-24 bg-white p-[26_40]">
+      <view class="text-sm c-primary">
+        个人收款
+      </view>
+      <view class="flex items-center justify-center gap-1">
+        <text class="text-base c-primary font-medium leading-none">
+          收款金额
+        </text>
+        <view class="h-32rpx w-32rpx flex items-center justify-center">
+          <image src="/static/images/Icon-Wrapper-1.png" mode="aspectFit" class="h-32 w-32" />
+        </view>
+      </view>
+    </view>
+
     <view class="m-auto mb-2 max-w-100 text-justify indent text-4">
       {{ description }}
     </view>
