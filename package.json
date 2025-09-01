@@ -1,9 +1,8 @@
 {
   "name": "unibest",
   "type": "module",
-  "version": "3.12.1",
-  "unibest-version": "3.12.1",
-  "packageManager": "pnpm@10.10.0",
+  "version": "3.12.5",
+  "unibest-version": "3.12.5",
   "description": "unibest - 最好的 uniapp 开发模板",
   "generate-time": "用户创建项目时生成",
   "author": {
@@ -22,7 +21,7 @@
   },
   "engines": {
     "node": ">=22",
-    "pnpm": "10.10.0"
+    "pnpm": ">=9 <=10.12"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -35,7 +34,7 @@
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",
     "dev:custom": "uni -p",
-    "dev": "uni",
+    "dev": "node --experimental-loader ./scripts/window-path-loader.js node_modules/@dcloudio/vite-plugin-uni/bin/uni.js",
     "dev:test": "uni --mode test",
     "dev:prod": "uni --mode production",
     "dev:h5": "uni",
@@ -145,11 +144,12 @@
     "@uni-helper/vite-plugin-uni-pages": "^0.3.8",
     "@uni-helper/vite-plugin-uni-platform": "^0.0.5",
     "@uni-ku/bundle-optimizer": "^1.3.3",
-    "@uni-ku/root": "^1.3.2",
+    "@uni-ku/root": "^1.3.4",
     "@unocss/eslint-plugin": "^66.2.3",
     "@vue/runtime-core": "3.4.21",
     "@vue/tsconfig": "^0.1.3",
     "autoprefixer": "^10.4.20",
+    "cross-env": "^10.0.0",
     "eslint": "^9.31.0",
     "eslint-plugin-format": "^1.0.1",
     "husky": "^9.1.7",
