@@ -97,9 +97,10 @@ function toLogin() {
       </u-button>
     </view>
     <view class="mb-4 mt-4 text-center">
-      UI组件官网：<text class="text-green-500">
+      UI组件官网：
+      <u-link color="#22c55e" href="https://uview-pro.anyup.cn/" underline>
         https://uview-pro.anyup.cn/
-      </text>
+      </u-link>
     </view>
     <button class="mt-4 w-40 text-center" @click="toLogin">
       点击去登录页
