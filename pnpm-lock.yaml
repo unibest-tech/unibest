@@ -87,8 +87,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1(pinia@2.0.36(typescript@5.8.3)(vue@3.4.21(typescript@5.8.3)))
       uview-pro:
-        specifier: ^0.0.3
-        version: 0.0.3
+        specifier: ^0.0.17
+        version: 0.0.17
       vue:
         specifier: 3.4.21
         version: 3.4.21(typescript@5.8.3)
@@ -1158,11 +1158,13 @@ packages:
   '@esbuild/darwin-arm64@0.20.2':
     resolution: {integrity: sha512-4J6IRT+10J3aJH3l1yzEg9y3wkTDgDk7TSDFX+wKFiWjqWp/iCfLIYzGyasx9l0SAFPT1HwSCR+0w/h1ES/MjA==}
     engines: {node: '>=12'}
+    cpu: [arm64]
     os: [darwin]
 
   '@esbuild/darwin-x64@0.20.2':
     resolution: {integrity: sha512-tBcXp9KNphnNH0dfhv8KYkZhjc+H3XBkF5DKtswJblV7KlT9EI2+jeA8DgBjp908WEuYll6pF+UStUCfEpdysA==}
     engines: {node: '>=12'}
+    cpu: [x64]
     os: [darwin]
 
   '@esbuild/freebsd-arm64@0.20.2':
@@ -1789,6 +1791,7 @@ packages:
 
   '@rollup/rollup-darwin-x64@4.50.0':
     resolution: {integrity: sha512-cQp/WG8HE7BCGyFVuzUg0FNmupxC+EPZEwWu2FCGGw5WDT1o2/YlENbm5e9SMvfDFR6FRhVCBePLqj0o8MN7Vw==}
+    cpu: [x64]
     os: [darwin]
 
   '@rollup/rollup-freebsd-arm64@4.50.0':
@@ -5898,9 +5901,9 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
-  uview-pro@0.0.3:
-    resolution: {integrity: sha512-6zibEyTAOvMIR0uxh/+a39x4uT+bmAYG+WlR07hXFtx3U2Kcoq6/EcOz9hf14ksRpeg4OhGufTBJNroArGK0aw==}
-    engines: {HBuilderX: ^4.07}
+  uview-pro@0.0.17:
+    resolution: {integrity: sha512-nQyxtuNhKqHjrd6tzBaR+3d2jZiiRqQUDVQze8O/mjRfZSB8ctJckdy12MGCmsUxb6B/zgGvO2LgGGe7Ob9Aaw==}
+    engines: {HBuilderX: ^4.07, uni-app: ^4.07, uni-app-x: ''}
 
   v8-to-istanbul@8.1.1:
     resolution: {integrity: sha512-FGtKtv3xIpR6BYhvgH8MI/y78oT7d8Au3ww4QIxymrCtZEh5b8gCw2siywE+puhEmuWKDtmfrvF5UlB298ut3w==}
@@ -13498,7 +13501,7 @@ snapshots:
 
   utils-merge@1.0.1: {}
 
-  uview-pro@0.0.3: {}
+  uview-pro@0.0.17: {}
 
   v8-to-istanbul@8.1.1:
     dependencies:
