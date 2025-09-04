@@ -16,7 +16,8 @@
       "@uni-helper/vite-plugin-uni-pages",
       "miniprogram-api-typings",
       "z-paging/types",
-      "./src/typings.d.ts"
+      "./src/typings.d.ts",
+      "uview-pro/types"
     ],
     "allowJs": true,
     "noImplicitThis": true,
