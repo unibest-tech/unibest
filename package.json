@@ -1,9 +1,9 @@
 {
   "name": "unibest",
   "type": "module",
-  "version": "3.13.0",
-  "unibest-version": "3.13.0",
-  "update-time": "2025-09-01",
+  "version": "3.13.1",
+  "unibest-version": "3.13.1",
+  "update-time": "2025-09-03",
   "description": "unibest - 最好的 uniapp 开发模板",
   "generate-time": "用户创建项目时生成",
   "author": {
@@ -119,7 +119,6 @@
     "pinia": "2.0.36",
     "pinia-plugin-persistedstate": "3.2.1",
     "vue": "^3.4.21",
-    "vue-i18n": "^9.14.5",
     "z-paging": "2.8.7"
   },
   "devDependencies": {
