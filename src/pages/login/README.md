@@ -13,10 +13,8 @@
 
 更多信息请看 `src/router` 文件夹的内容。
 
-
-
 ## 登录跳转
 
 目前登录的跳转逻辑主要在 `src/router/interceptor.ts` 和 `src/pages/login/login.vue` 里面，默认会在登录后自动重定向到来源/配置的页面。
 
-用户可以自行修改。
+如果与您的业务不符，您可以自行修改。
