@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { isApp, isAppAndroid, isAppHarmony, isAppIOS, isAppPlus, isH5, isMpWeixin, isWeb } from '@uni-helper/uni-env'
+import { toast } from 'sard-uniapp'
 import { LOGIN_PAGE } from '@/router/config'
 import { useTokenStore } from '@/store'
 import { tabbarStore } from '@/tabbar/store'
@@ -90,11 +91,19 @@ onReady(() => {
 onShow(() => {
   console.log('onShow uniKuRoot exposeRef', uniKuRoot.value?.exposeRef)
 })
+
+function onToast() {
+  toast('文本提示')
+}
 </script>
 
 <template root="uniKuRoot">
   <!-- page-meta 使用范例 -->
   <page-meta page-style="overflow: auto" />
+
+  <button class="mt-4 w-40 text-center" @click="onToast">
+    toast测试
+  </button>
   <view>
     <view class="mt-8 text-center text-xl text-gray-400">
       请求调用、unocss、static图片
