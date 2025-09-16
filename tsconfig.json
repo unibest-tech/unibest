@@ -18,6 +18,8 @@
       "@ttou/uv-typings/shim",
       "@ttou/uv-typings/v2",
       "z-paging/types",
+      "./src/types/async-component.d.ts",
+      "./src/types/async-import.d.ts",
       "./src/typings.d.ts"
     ],
     "allowJs": true,
