@@ -91,7 +91,7 @@ onLoad(() => {
     <view class="mb-4 mt-4 text-center">
       UI组件官网：
       <u-link color="#22c55e" href="https://uview-pro.anyup.cn/" underline>
-        https://uview-pro.anyup.cn/
+        https://uviewpro.cn/
       </u-link>
     </view>
     <view class="h-6" />
