@@ -9,7 +9,7 @@ const data = ref<UserItem>()
 async function getUserInfo() {
   try {
     loading.value = true
-    const res = await (await infoUsingGet({})).promise
+    const res = await infoUsingGet({})
     console.log(res)
     data.value = res
     error.value = null
@@ -22,7 +22,7 @@ async function getUserInfo() {
     loading.value = false
   }
 }
-const { data: data2, loading: loading2, run, cancel } = useRequest(() => listAllUsingGet({}), {
+const { data: data2, loading: loading2, run, cancel } = useRequestWithCancel(() => listAllUsingGet({}), {
   immediate: false,
 })
 </script>
