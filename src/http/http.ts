@@ -117,6 +117,8 @@ export function http<T>(options: CustomRequestOptions) {
       },
     })
   })
+  if (!options.isCancel)
+    return promise
   return { promise, requestTask: requestTask! }
 }
 

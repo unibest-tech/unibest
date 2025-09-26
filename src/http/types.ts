@@ -5,6 +5,8 @@ export type CustomRequestOptions = UniApp.RequestOptions & {
   query?: Record<string, any>
   /** 出错时是否隐藏错误提示 */
   hideErrorToast?: boolean
+  /** 是否取消请求 */
+  isCancel?: boolean
 } & IUniUploadFileOptions // 添加uni.uploadFile参数类型
 
 export interface HttpRequestResult<T> {
