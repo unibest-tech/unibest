@@ -22,6 +22,14 @@ console.log('index/index 首页打印了')
 onLoad(() => {
   console.log('测试 uni API 自动引入: onLoad')
 })
+
+// #region gotoAbout
+function gotoAbout() {
+  uni.navigateTo({
+    url: '/pages-sub/about/about',
+  })
+}
+// #endregion
 </script>
 
 <template>
@@ -92,6 +100,11 @@ onLoad(() => {
       UI组件官网：<text class="text-green-500">
         https://sard.wzt.zone/sard-uniapp-docs/
       </text>
+    </view>
+    <view class="mt-4 text-center">
+      <wd-button type="primary" class="ml-2" @click="gotoAbout">
+        前往示例页
+      </wd-button>
     </view>
     <view class="h-6" />
   </view>
