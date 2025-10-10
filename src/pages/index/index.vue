@@ -1,114 +1,73 @@
-<script lang="ts" setup>
-import { useThemeStore } from '@/store'
-import { safeAreaInsets } from '@/utils/systemInfo'
-
-defineOptions({
-  name: 'Home',
-})
-definePage({
-  // 使用 type: "home" 属性设置首页，其他页面不需要设置，默认为page
-  type: 'home',
-  style: {
-    // 'custom' 表示开启自定义导航栏，默认 'default'
-    navigationStyle: 'custom',
-    navigationBarTitleText: '首页',
-  },
-})
-
-const themeStore = useThemeStore()
-
-const description = ref(
-  'unibest 是一个集成了多种工具和技术的 uniapp 开发模板，由 uniapp + Vue3 + Ts + Vite5 + UnoCss + VSCode 构建，模板具有代码提示、自动格式化、统一配置、代码片段等功能，并内置了许多常用的基本组件和基本功能，让你编写 uniapp 拥有 best 体验。',
-)
-console.log('index/index 首页打印了')
-
-onLoad(() => {
-  console.log('测试 uni API 自动引入: onLoad')
-})
-
-// #region gotoAbout
-function gotoAbout() {
-  uni.navigateTo({
-    url: '/pages-sub/about/about',
-  })
-}
-// #endregion
-</script>
-
 <template>
-  <view class="bg-white px-4 pt-2" :style="{ marginTop: `${safeAreaInsets?.top}px` }">
-    <view class="mt-10">
-      <image src="/static/logo.svg" alt="" class="mx-auto block h-28 w-28" />
+  <view class="content">
+    <image class="logo" src="/static/logo.png" />
+    <view class="text-area">
+      <text class="title">{{ title }}</text>
     </view>
-    <view class="mt-4 text-center text-4xl text-[#d14328]">
-      unibest
-    </view>
-    <view class="mb-8 mt-2 text-center text-2xl">
-      最好用的 uniapp 开发模板
-    </view>
-
-    <view class="m-auto mb-2 max-w-100 text-justify indent text-4">
-      {{ description }}
-    </view>
-    <view class="mt-4 text-center">
-      作者：
-      <text class="text-green-500">
-        菲鸽
-      </text>
-    </view>
-    <view class="mt-4 text-center">
-      官网地址：
-      <text class="text-green-500">
-        https://unibest.tech
-      </text>
-    </view>
-
-    <!-- #ifdef H5 -->
-    <view class="mt-4 text-center">
-      <a href="https://unibest.tech/base/3-plugin" target="_blank" class="text-green-500">
-        新手请看必看章节1：
-      </a>
-    </view>
-    <!-- #endif -->
-    <!-- #ifdef MP-WEIXIN -->
-    <view class="mt-4 text-center">
-      新手请看必看章节1：
-      <text class="text-green-500">
-        https://unibest.tech/base/3-plugin
-      </text>
-    </view>
-    <!-- #endif -->
-    <!-- #ifdef H5 -->
-    <view class="mt-4 text-center">
-      <a href="https://unibest.tech/base/14-faq" target="_blank" class="text-green-500">
-        新手请看必看章节2：
-      </a>
-    </view>
-    <!-- #endif -->
-    <!-- #ifdef MP-WEIXIN -->
-    <view class="mt-4 text-center">
-      新手请看必看章节2：
-      <text class="text-green-500">
-        https://unibest.tech/base/14-faq
-      </text>
-    </view>
-    <!-- #endif -->
-
-    <view class="mt-4 text-center">
-      <wd-button type="primary" class="ml-2" @click="themeStore.setThemeVars({ colorTheme: 'red' })">
-        设置主题变量
-      </wd-button>
-    </view>
-    <view class="mt-4 text-center">
-      UI组件官网：<text class="text-green-500">
-        https://wot-design-uni.cn
-      </text>
-    </view>
-    <view class="mt-4 text-center">
-      <wd-button type="primary" class="ml-2" @click="gotoAbout">
-        前往示例页
-      </wd-button>
-    </view>
-    <view class="h-6" />
+    <button @click="testco()">
+      请求云对象的方法
+    </button>
+    <button @click="testco2()">
+      请求云对函数的方法
+    </button>
   </view>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const title = ref('hello')
+
+async function testco() {
+  // 注意异步
+  const helloco = uniCloud.importObject('test-unicloud-ob') // 导入云对象
+  try {
+    const res = await helloco.testFn('unibest') // 导入云对象后就可以直接调用该对象的sum方法了，注意使用异步await
+    console.log(res) // 结果是3
+  }
+  catch (e) {
+    console.log(e)
+  }
+}
+async function testco2() {
+  try {
+    // 注意异步
+    const { result } = await uniCloud.callFunction({
+      name: 'test-unicloud',
+      data: { data: 'hello unibest' },
+    })
+    console.log(result)
+  }
+  catch (e) {
+    console.log(e)
+  }
+}
+</script>
+
+<style>
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 200rpx;
+  width: 200rpx;
+  margin-top: 200rpx;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50rpx;
+}
+
+.text-area {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 36rpx;
+  color: #8f8f94;
+}
+</style>
