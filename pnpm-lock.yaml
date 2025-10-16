@@ -18,6 +18,9 @@ importers:
       '@alova/shared':
         specifier: ^1.3.1
         version: 1.3.1
+      '@climblee/uv-ui':
+        specifier: ^1.1.20
+        version: 1.1.20
       '@dcloudio/uni-app':
         specifier: 3.0.0-4070620250821001
         version: 3.0.0-4070620250821001(@dcloudio/types@3.4.19)(postcss@8.5.6)(rollup@4.50.0)(vue@3.4.21(typescript@5.8.3))
@@ -87,9 +90,9 @@ importers:
       vue:
         specifier: ^3.4.21
         version: 3.4.21(typescript@5.8.3)
-      wot-design-uni:
-        specifier: ^1.12.4
-        version: 1.12.4(vue@3.4.21(typescript@5.8.3))
+      vue-router:
+        specifier: 4.5.1
+        version: 4.5.1(vue@3.4.21(typescript@5.8.3))
       z-paging:
         specifier: 2.8.7
         version: 2.8.7
@@ -924,6 +927,9 @@ packages:
 
   '@clack/prompts@0.11.0':
     resolution: {integrity: sha512-pMN5FcrEw9hUkZA4f+zLlzivQSeQf5dRGJjSUbvVYDLvpKCdQx5OaknvKzgbtXOizhP+SJJJjqEbOe55uKKfAw==}
+
+  '@climblee/uv-ui@1.1.20':
+    resolution: {integrity: sha512-jkyesHJsPJkF4Nap9ZmG1/ibKlxXA5M8+ntqKXwwloIsYSYL5SOKb0gyPj17aBOU1PkJpmeiZ8PwnTolhK2/HA==}
 
   '@commitlint/cli@19.8.1':
     resolution: {integrity: sha512-LXUdNIkspyxrlV6VDHWBmCZRtkEVRpBKxi2Gtw3J54cGWhLCTouVD/Q6ZSaSvd2YaDObWK8mDjrz3TIKtaQMAA==}
@@ -6131,12 +6137,6 @@ packages:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
 
-  wot-design-uni@1.12.4:
-    resolution: {integrity: sha512-GE7hfJ+RKRCiWtEkhoQ5gz3fbwNB69EzLcXiIUPK2gawk9+hp7KescjplcxdxGfeuCJUlhF6wW9VUEe86h/63g==}
-    engines: {HBuilderX: ^3.8.7}
-    peerDependencies:
-      vue: '>=3.2.47'
-
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
     engines: {node: '>=10'}
@@ -7118,6 +7118,8 @@ snapshots:
       '@clack/core': 0.5.0
       picocolors: 1.1.1
       sisteransi: 1.0.5
+
+  '@climblee/uv-ui@1.1.20': {}
 
   '@commitlint/cli@19.8.1(@types/node@20.19.11)(typescript@5.8.3)':
     dependencies:
@@ -13845,10 +13847,6 @@ snapshots:
       isexe: 2.0.0
 
   word-wrap@1.2.5: {}
-
-  wot-design-uni@1.12.4(vue@3.4.21(typescript@5.8.3)):
-    dependencies:
-      vue: 3.4.21(typescript@5.8.3)
 
   wrap-ansi@7.0.0:
     dependencies:
