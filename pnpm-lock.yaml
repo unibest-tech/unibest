@@ -66,9 +66,12 @@ importers:
       '@dcloudio/uni-quickapp-webview':
         specifier: 3.0.0-4070620250821001
         version: 3.0.0-4070620250821001(postcss@8.5.6)(rollup@4.50.0)(vue@3.4.21(typescript@5.8.3))
-      abortcontroller-polyfill:
-        specifier: ^1.7.8
-        version: 1.7.8
+      '@skiyee/ui-preset':
+        specifier: ^0.0.8
+        version: 0.0.8(unocss@66.0.0(postcss@8.5.6)(vite@5.2.8(@types/node@20.19.11)(sass@1.77.8)(terser@5.43.1))(vue@3.4.21(typescript@5.8.3)))
+      '@skiyee/uni-ui':
+        specifier: ^1.1.0
+        version: 1.1.0(vue@3.4.21(typescript@5.8.3))
       alova:
         specifier: ^3.3.3
         version: 3.3.4
@@ -90,9 +93,6 @@ importers:
       vue-router:
         specifier: 4.5.1
         version: 4.5.1(vue@3.4.21(typescript@5.8.3))
-      wot-design-uni:
-        specifier: ^1.12.4
-        version: 1.12.4(vue@3.4.21(typescript@5.8.3))
       z-paging:
         specifier: 2.8.7
         version: 2.8.7
@@ -130,6 +130,9 @@ importers:
       '@rollup/rollup-darwin-x64':
         specifier: ^4.28.0
         version: 4.50.0
+      '@skiyee/ui-resolver':
+        specifier: ^0.0.2
+        version: 0.0.2
       '@types/node':
         specifier: ^20.17.9
         version: 20.19.11
@@ -1387,6 +1390,9 @@ packages:
   '@iconify-json/carbon@1.2.13':
     resolution: {integrity: sha512-vXrFFKkfYaZSwf4WfnRQJQMnpEzxlPlupwZZlS1WvOAuNnWahsUudHycaMpoBzDqBfniH4KQ2b5qnw0VMKoJug==}
 
+  '@iconify-json/lucide@1.2.70':
+    resolution: {integrity: sha512-56s9NdBKgshywVY1e4gOcxzAbU1J649e/jLHBJU1tyNqRs7mFLVEGwj2mmzHJ5YAZB5Tsngi4f/ocTBPlG06ZA==}
+
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
@@ -1936,6 +1942,40 @@ packages:
 
   '@sinonjs/fake-timers@8.1.0':
     resolution: {integrity: sha512-OAPJUAtgeINhh/TAlUID4QTs53Njm7xzddaVlEs/SXwgtiD1tW22zAB/W1wdqfrpmikgaWQ9Fw6Ws+hsiRm5Vg==}
+
+  '@skiyee/ucv@0.1.2':
+    resolution: {integrity: sha512-mAlBOTX+CwOAqdmtIxXRU+8pnW0IkisgDoNy6OFQnUxGy4rz3McC1uoDZ1XrbXiZhsDQeyJ5RzkShuxoJeexQQ==}
+
+  '@skiyee/ui-preset@0.0.8':
+    resolution: {integrity: sha512-B+Fw/ns6Le0+wD9Fn7cE8nscx/eAZpkO51yRWhAzYiE2dJ5kR53AgBKox36eOgCRGjg6bgCQC/SlM7Xju957Dw==}
+    peerDependencies:
+      unocss: '>=66.0.0'
+
+  '@skiyee/ui-resolver@0.0.2':
+    resolution: {integrity: sha512-SijtOgFmOOGPqzk3qR8Fa26NOjMMrOIe2ZDDfcN2AfhMar5dzxeUJi/D5z/CylpdxD5PLbtQyB7NZ0Rm6JQCyQ==}
+
+  '@skiyee/uni-ui@1.1.0':
+    resolution: {integrity: sha512-hyCnUyOaLD3pRqLiIQezUGf7upblpP6dSFljYo9+ka9ZWpRQI7pwYHy+fLb89f0nrEcsy8FgMmlpJmvdyWtWZw==}
+    peerDependencies:
+      arktype: '>=2.0.0'
+      valibot: '>=1.0.0'
+      vue: '>=3.4.21'
+      zod: '>=3.24.0'
+    peerDependenciesMeta:
+      arktype:
+        optional: true
+      valibot:
+        optional: true
+      zod:
+        optional: true
+
+  '@skiyee/unocss-preset-miniapp@0.0.4':
+    resolution: {integrity: sha512-abkiLI6UppJ4/WpWrtnj9EIVl2zqZcxGJwUK9ppff/VRFSAC12oaUG2QuipWdoPesbDCGIAnrMQ8TfVJxmyhOQ==}
+    peerDependencies:
+      unocss: '>=66.0.0'
+
+  '@standard-schema/spec@1.0.0':
+    resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
 
   '@stylistic/eslint-plugin@5.4.0':
     resolution: {integrity: sha512-UG8hdElzuBDzIbjG1QDwnYH0MQ73YLXDFHgZzB4Zh/YJfnw8XNsloVtytqzx0I2Qky9THSdpTmi8Vjn/pf/Lew==}
@@ -2519,9 +2559,6 @@ packages:
   abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
     deprecated: Use your platform's native atob() and btoa() methods instead
-
-  abortcontroller-polyfill@1.7.8:
-    resolution: {integrity: sha512-9f1iZ2uWh92VcrU9Y8x+LdM4DLj75VE0MJB8zuF1iUnroEptStw+DQ8EQPMUdfe5k+PkB1uUfDQfWbhstH8LrQ==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -6134,12 +6171,6 @@ packages:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
 
-  wot-design-uni@1.12.4:
-    resolution: {integrity: sha512-GE7hfJ+RKRCiWtEkhoQ5gz3fbwNB69EzLcXiIUPK2gawk9+hp7KescjplcxdxGfeuCJUlhF6wW9VUEe86h/63g==}
-    engines: {HBuilderX: ^3.8.7}
-    peerDependencies:
-      vue: '>=3.2.47'
-
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
     engines: {node: '>=10'}
@@ -8142,6 +8173,10 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
+  '@iconify-json/lucide@1.2.70':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify/types@2.0.0': {}
 
   '@iconify/utils@2.3.0':
@@ -8845,6 +8880,32 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 1.8.6
 
+  '@skiyee/ucv@0.1.2': {}
+
+  '@skiyee/ui-preset@0.0.8(unocss@66.0.0(postcss@8.5.6)(vite@5.2.8(@types/node@20.19.11)(sass@1.77.8)(terser@5.43.1))(vue@3.4.21(typescript@5.8.3)))':
+    dependencies:
+      '@iconify-json/lucide': 1.2.70
+      '@skiyee/unocss-preset-miniapp': 0.0.4(unocss@66.0.0(postcss@8.5.6)(vite@5.2.8(@types/node@20.19.11)(sass@1.77.8)(terser@5.43.1))(vue@3.4.21(typescript@5.8.3)))
+      '@unocss/core': 66.0.0
+      '@unocss/rule-utils': 66.0.0
+      unocss: 66.0.0(postcss@8.5.6)(vite@5.2.8(@types/node@20.19.11)(sass@1.77.8)(terser@5.43.1))(vue@3.4.21(typescript@5.8.3))
+
+  '@skiyee/ui-resolver@0.0.2': {}
+
+  '@skiyee/uni-ui@1.1.0(vue@3.4.21(typescript@5.8.3))':
+    dependencies:
+      '@iconify-json/lucide': 1.2.70
+      '@skiyee/ucv': 0.1.2
+      '@standard-schema/spec': 1.0.0
+      vue: 3.4.21(typescript@5.8.3)
+
+  '@skiyee/unocss-preset-miniapp@0.0.4(unocss@66.0.0(postcss@8.5.6)(vite@5.2.8(@types/node@20.19.11)(sass@1.77.8)(terser@5.43.1))(vue@3.4.21(typescript@5.8.3)))':
+    dependencies:
+      '@unocss/core': 66.0.0
+      unocss: 66.0.0(postcss@8.5.6)(vite@5.2.8(@types/node@20.19.11)(sass@1.77.8)(terser@5.43.1))(vue@3.4.21(typescript@5.8.3))
+
+  '@standard-schema/spec@1.0.0': {}
+
   '@stylistic/eslint-plugin@5.4.0(eslint@9.34.0(jiti@2.6.1))':
     dependencies:
       '@eslint-community/eslint-utils': 4.9.0(eslint@9.34.0(jiti@2.6.1))
@@ -9449,7 +9510,7 @@ snapshots:
 
   '@unocss/rule-utils@66.0.0':
     dependencies:
-      '@unocss/core': 66.5.1
+      '@unocss/core': 66.5.3
       magic-string: 0.30.19
 
   '@unocss/rule-utils@66.5.0':
@@ -9709,8 +9770,6 @@ snapshots:
   a-sync-waterfall@1.0.1: {}
 
   abab@2.0.6: {}
-
-  abortcontroller-polyfill@1.7.8: {}
 
   accepts@1.3.8:
     dependencies:
@@ -13848,10 +13907,6 @@ snapshots:
       isexe: 2.0.0
 
   word-wrap@1.2.5: {}
-
-  wot-design-uni@1.12.4(vue@3.4.21(typescript@5.8.3)):
-    dependencies:
-      vue: 3.4.21(typescript@5.8.3)
 
   wrap-ansi@7.0.0:
     dependencies:
