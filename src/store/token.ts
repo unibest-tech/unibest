@@ -105,7 +105,7 @@ export const useTokenStore = defineStore(
       try {
         const res = await _login(loginForm)
         console.log('普通登录-res: ', res)
-        await _postLogin(res)
+        await _postLogin(res.data)
         uni.showToast({
           title: '登录成功',
           icon: 'success',
@@ -135,7 +135,7 @@ export const useTokenStore = defineStore(
         console.log('微信登录-code: ', code)
         const res = await _wxLogin(code)
         console.log('微信登录-res: ', res)
-        await _postLogin(res)
+        await _postLogin(res.data)
         uni.showToast({
           title: '登录成功',
           icon: 'success',
@@ -195,7 +195,7 @@ export const useTokenStore = defineStore(
         const refreshToken = tokenInfo.value.refreshToken
         const res = await _refreshToken(refreshToken)
         console.log('刷新token-res: ', res)
-        setTokenInfo(res)
+        setTokenInfo(res.data)
         return res
       }
       catch (error) {
