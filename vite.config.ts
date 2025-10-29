@@ -3,6 +3,7 @@ import process from 'node:process'
 import SkResolver from '@skiyee/ui-resolver'
 import Uni from '@uni-helper/plugin-uni'
 import Components from '@uni-helper/vite-plugin-uni-components'
+import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
 // @see https://uni-helper.js.org/vite-plugin-uni-layouts
 import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
 // @see https://github.com/uni-helper/vite-plugin-uni-manifest
@@ -139,6 +140,7 @@ export default defineConfig(({ command, mode }) => {
       ),
       syncManifestPlugin(),
       Components({
+        resolvers: [WotResolver()],
         extensions: ['vue'],
         deep: true, // 是否递归扫描子目录，
         directoryAsNamespace: false, // 是否把目录名作为命名空间前缀，true 时组件名为 目录名+组件名，
