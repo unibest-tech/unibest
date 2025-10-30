@@ -1,5 +1,10 @@
 import path from 'node:path'
 import process from 'node:process'
+/**
+ * 小程序占位组件 componentPlaceholder
+ * @ see https://github.com/chouchouji/vite-plugin-component-placeholder
+ */
+import ComponentPlaceholder from '@binbinji/vite-plugin-component-placeholder'
 import Uni from '@uni-helper/plugin-uni'
 import Components from '@uni-helper/vite-plugin-uni-components'
 import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
@@ -148,6 +153,7 @@ export default defineConfig(({ command, mode }) => {
       // 若存在改变 pages.json 的插件，请将 UniKuRoot 放置其后
       UniKuRoot(),
       Uni(),
+      ComponentPlaceholder(),
       // 自动打开开发者工具插件 (必须修改 .env 文件中的 VITE_WX_APPID)
       openDevTools(),
     ],
