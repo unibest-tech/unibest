@@ -135,6 +135,7 @@
     "@esbuild/darwin-arm64": "0.20.2",
     "@esbuild/darwin-x64": "0.20.2",
     "@iconify-json/carbon": "^1.2.4",
+    "@iconify/utils": "^3.0.2",
     "@rollup/rollup-darwin-x64": "^4.28.0",
     "@skiyee/ui-resolver": "^0.0.2",
     "@types/node": "^20.17.9",
