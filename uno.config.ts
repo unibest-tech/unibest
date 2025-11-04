@@ -9,7 +9,6 @@ import { presetUni } from '@uni-helper/unocss-preset-uni'
 import { presetLegacyCompat } from '@unocss/preset-legacy-compat'
 import {
   defineConfig,
-  presetAttributify,
   presetIcons,
   transformerDirectives,
   transformerVariantGroup,
@@ -28,8 +27,6 @@ export default defineConfig({
         'vertical-align': 'middle',
       },
     }),
-    // 支持css class属性化
-    presetAttributify(),
     presetSkiyeeUI(),
     // TODO: check 是否会有别的影响
     // 处理低端安卓机的样式问题
