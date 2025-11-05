@@ -92,6 +92,11 @@ export default defineConfig(({ command, mode }) => {
         logger: false,
       }),
       // UniXXX 需要在 Uni 之前引入
+      // 若存在改变 pages.json 的插件，请将 UniKuRoot 放置其后
+      UniKuRoot({
+        excludePages: ['**/components/**/**.*'],
+      }),
+      Uni(),
       {
         // 临时解决 dcloudio 官方的 @dcloudio/uni-mp-compiler 出现的编译 BUG
         // 参考 github issue: https://github.com/dcloudio/uni-app/issues/4952
@@ -149,9 +154,6 @@ export default defineConfig(({ command, mode }) => {
           SkResolver(),
         ],
       }),
-      // 若存在改变 pages.json 的插件，请将 UniKuRoot 放置其后
-      UniKuRoot(),
-      Uni(),
       // 自动打开开发者工具插件 (必须修改 .env 文件中的 VITE_WX_APPID)
       openDevTools(),
     ],
