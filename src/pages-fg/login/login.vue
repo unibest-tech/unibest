@@ -1,10 +1,5 @@
 <script lang="ts" setup>
 import { useTokenStore } from '@/store/token'
-import { useUserStore } from '@/store/user'
-import { tabbarList } from '@/tabbar/config'
-import { isPageTabbar } from '@/tabbar/store'
-import { ensureDecodeURIComponent } from '@/utils'
-import { parseUrlToObj } from '@/utils/index'
 
 definePage({
   style: {
@@ -12,19 +7,6 @@ definePage({
   },
 })
 
-const redirectUrl = ref('')
-onLoad((options) => {
-  console.log('login options: ', options)
-  if (options.redirect) {
-    redirectUrl.value = ensureDecodeURIComponent(options.redirect)
-  }
-  else {
-    redirectUrl.value = tabbarList[0].pagePath
-  }
-  console.log('redirectUrl.value: ', redirectUrl.value)
-})
-
-const userStore = useUserStore()
 const tokenStore = useTokenStore()
 async function doLogin() {
   if (tokenStore.hasLogin) {
@@ -37,35 +19,10 @@ async function doLogin() {
       username: '菲鸽',
       password: '123456',
     })
-    console.log(redirectUrl.value)
+    uni.navigateBack()
   }
   catch (error) {
     console.log('登录失败', error)
-  }
-  let path = redirectUrl.value
-  if (!path.startsWith('/')) {
-    path = `/${path}`
-  }
-  const { path: _path, query } = parseUrlToObj(path)
-  console.log('_path:', _path, 'query:', query, 'path:', path)
-  console.log('isPageTabbar(_path):', isPageTabbar(_path))
-  if (isPageTabbar(_path)) {
-    // 经过我的测试 switchTab 不能带 query 参数, 不管是放到 url  还是放到 query ,
-    // 最后跳转过去的时候都会丢失 query 信息
-    uni.switchTab({
-      url: path,
-    })
-    // uni.switchTab({
-    //   url: _path,
-    //   query,
-    // })
-  }
-  else {
-    // 自己决定是 redirectTo 还是 navigateBack
-    // uni.redirectTo({
-    //   url: path,
-    // })
-    uni.navigateBack()
   }
 }
 </script>
