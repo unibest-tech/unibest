@@ -62,53 +62,5 @@ function gotoAbout() {
         https://unibest.tech
       </text>
     </view>
-
-    <!-- #ifdef H5 -->
-    <view class="mt-4 text-center">
-      <a href="https://unibest.tech/base/3-plugin" target="_blank" class="text-green-500">
-        新手请看必看章节1：
-      </a>
-    </view>
-    <!-- #endif -->
-    <!-- #ifdef MP-WEIXIN -->
-    <view class="mt-4 text-center">
-      新手请看必看章节1：
-      <text class="text-green-500">
-        https://unibest.tech/base/3-plugin
-      </text>
-    </view>
-    <!-- #endif -->
-    <!-- #ifdef H5 -->
-    <view class="mt-4 text-center">
-      <a href="https://unibest.tech/base/14-faq" target="_blank" class="text-green-500">
-        新手请看必看章节2：
-      </a>
-    </view>
-    <!-- #endif -->
-    <!-- #ifdef MP-WEIXIN -->
-    <view class="mt-4 text-center">
-      新手请看必看章节2：
-      <text class="text-green-500">
-        https://unibest.tech/base/14-faq
-      </text>
-    </view>
-    <!-- #endif -->
-
-    <view class="mt-4 text-center">
-      <wd-button type="primary" class="ml-2" @click="themeStore.setThemeVars({ colorTheme: 'red' })">
-        设置主题变量
-      </wd-button>
-    </view>
-    <view class="mt-4 text-center">
-      UI组件官网：<text class="text-green-500">
-        https://wot-design-uni.cn
-      </text>
-    </view>
-    <view class="mt-4 text-center">
-      <wd-button type="primary" class="ml-2" @click="gotoAbout">
-        前往示例页
-      </wd-button>
-    </view>
-    <view class="h-6" />
   </view>
 </template>
