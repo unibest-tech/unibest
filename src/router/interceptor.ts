@@ -1,12 +1,48 @@
+import { isMp } from '@uni-helper/uni-env'
 /**
  * by 菲鸽 on 2025-08-19
  * 路由拦截，通常也是登录拦截
  * 黑、白名单的配置，请看 config.ts 文件， EXCLUDE_LOGIN_PATH_LIST
  */
-import { tabbarStore } from '@/tabbar/store'
-import { getAllPages, getLastPage, parseUrlToObj } from '@/utils/index'
+import { useTokenStore } from '@/store/token'
+import { isPageTabbar, tabbarStore } from '@/tabbar/store'
+import { getAllPages, getLastPage, HOME_PAGE, parseUrlToObj } from '@/utils/index'
+import { EXCLUDE_LOGIN_PATH_LIST, isNeedLoginMode, LOGIN_PAGE, LOGIN_PAGE_ENABLE_IN_MP, NOT_FOUND_PAGE } from './config'
 
 export const FG_LOG_ENABLE = false
+
+// 系统内部页面白名单（不需要检查路由存在性）
+const SYSTEM_INTERNAL_PATHS = [
+  '/__uniappchooselocation', // 选择位置页面
+  '/__uniapproute', // 路由页面
+  '/__uniappfilepicker', // 文件选择器
+  '/__uniappimagepicker', // 图片选择器
+]
+
+export function judgeIsExcludePath(path: string) {
+  const isDev = import.meta.env.DEV
+  if (!isDev) {
+    return EXCLUDE_LOGIN_PATH_LIST.includes(path)
+  }
+  const allExcludeLoginPages = getAllPages('excludeLoginPath') // dev 环境下，需要每次都重新获取，否则新配置就不会生效
+  return EXCLUDE_LOGIN_PATH_LIST.includes(path) || (isDev && allExcludeLoginPages.some(page => page.path === path))
+}
+
+// 检查是否为系统内部页面
+export function isSystemInternalPath(path: string): boolean {
+  return SYSTEM_INTERNAL_PATHS.includes(path)
+}
+
+// 检查路由是否存在
+export function isRouteExists(path: string): boolean {
+  // 系统内部页面始终认为存在
+  if (isSystemInternalPath(path)) {
+    return true
+  }
+
+  const allPages = getAllPages()
+  return allPages.some(page => page.path === path) || path === '/'
+}
 
 export const navigateToInterceptor = {
   // 注意，这里的url是 '/' 开头的，如 '/pages/index/index'，跟 'pages.json' 里面的 path 不同
@@ -32,14 +68,92 @@ export const navigateToInterceptor = {
       path = `${baseDir}/${path}`
     }
 
+    // 系统内部页面直接放行（不检查路由存在性，不进行登录拦截）
+    if (isSystemInternalPath(path)) {
+      FG_LOG_ENABLE && console.log('系统内部页面，直接放行:', path)
+      return true
+    }
+
     // 处理路由不存在的情况
-    if (path !== '/' && !getAllPages().some(page => page.path !== path)) {
+    if (!isRouteExists(path)) {
       console.warn('路由不存在:', path)
+      uni.navigateTo({ url: NOT_FOUND_PAGE })
       return false // 明确表示阻止原路由继续执行
     }
 
     // 处理直接进入路由非首页时，tabbarIndex 不正确的问题
     tabbarStore.setAutoCurIdx(path)
+
+    // 小程序里面使用平台自带的登录，则不走下面的逻辑
+    if (isMp && !LOGIN_PAGE_ENABLE_IN_MP) {
+      return true // 明确表示允许路由继续执行
+    }
+
+    const tokenStore = useTokenStore()
+    FG_LOG_ENABLE && console.log('tokenStore.hasLogin:', tokenStore.hasLogin)
+
+    // 不管黑白名单，登录了就直接去吧（但是当前不能是登录页）
+    if (tokenStore.hasLogin) {
+      if (path !== LOGIN_PAGE) {
+        return true // 明确表示允许路由继续执行
+      }
+      else {
+        console.log('已经登录，但是还在登录页', myQuery.redirect)
+        const url = myQuery.redirect || HOME_PAGE
+        if (isPageTabbar(url)) {
+          uni.switchTab({ url })
+        }
+        else {
+          uni.navigateTo({ url })
+        }
+        return false // 明确表示阻止原路由继续执行
+      }
+    }
+    let fullPath = path
+
+    if (Object.keys(myQuery).length) {
+      fullPath += `?${Object.keys(myQuery).map(key => `${key}=${myQuery[key]}`).join('&')}`
+    }
+    const redirectUrl = `${LOGIN_PAGE}?redirect=${encodeURIComponent(fullPath)}`
+
+    // #region 1/2 默认需要登录的情况(白名单策略) ---------------------------
+    if (isNeedLoginMode) {
+      // 需要登录里面的 EXCLUDE_LOGIN_PATH_LIST 表示白名单，可以直接通过
+      if (judgeIsExcludePath(path)) {
+        return true // 明确表示允许路由继续执行
+      }
+      // 否则需要重定向到登录页
+      else {
+        if (path === LOGIN_PAGE) {
+          return true // 明确表示允许路由继续执行
+        }
+        FG_LOG_ENABLE && console.log('1 isNeedLogin(白名单策略) redirectUrl:', redirectUrl)
+        uni.navigateTo({ url: redirectUrl })
+        return false // 明确表示阻止原路由继续执行
+      }
+    }
+    // #endregion 1/2 默认需要登录的情况(白名单策略) ---------------------------
+
+    // #region 2/2 默认不需要登录的情况(黑名单策略) ---------------------------
+    else {
+      // 不需要登录里面的 EXCLUDE_LOGIN_PATH_LIST 表示黑名单，需要重定向到登录页
+      if (judgeIsExcludePath(path)) {
+        FG_LOG_ENABLE && console.log('2 isNeedLogin(黑名单策略) redirectUrl:', redirectUrl)
+        uni.navigateTo({ url: redirectUrl })
+        return false // 修改为false，阻止原路由继续执行
+      }
+      return true // 明确表示允许路由继续执行
+    }
+    // #endregion 2/2 默认不需要登录的情况(黑名单策略) ---------------------------
+  },
+}
+
+// 针对 chooseLocation 的特殊处理
+export const chooseLocationInterceptor = {
+  invoke(options: any) {
+    // 直接放行 chooseLocation 调用
+    FG_LOG_ENABLE && console.log('chooseLocation 调用，直接放行:', options)
+    return true
   },
 }
 
@@ -49,5 +163,8 @@ export const routeInterceptor = {
     uni.addInterceptor('reLaunch', navigateToInterceptor)
     uni.addInterceptor('redirectTo', navigateToInterceptor)
     uni.addInterceptor('switchTab', navigateToInterceptor)
+
+    // 添加 chooseLocation 的拦截器，确保直接放行
+    uni.addInterceptor('chooseLocation', chooseLocationInterceptor)
   },
 }
