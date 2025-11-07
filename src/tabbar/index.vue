@@ -2,6 +2,7 @@
 // i-carbon-code
 import type { CustomTabBarItem } from './types'
 import { customTabbarEnable, needHideNativeTabbar, tabbarCacheEnable } from './config'
+import { getI18nText, setTabbarItem } from './i18n'
 import { tabbarList, tabbarStore } from './store'
 
 // #ifdef MP-WEIXIN
@@ -82,6 +83,11 @@ function getImageByIndex(index: number, item: CustomTabBarItem) {
   }
   return tabbarStore.curIdx === index ? item.iconActive : item.icon
 }
+
+// 注意，上面处理的是自定义tabbar，下面处理的是原生tabbar，参考：https://unibest.tech/base/10-i18n
+onShow(() => {
+  setTabbarItem()
+})
 </script>
 
 <template>
@@ -117,7 +123,7 @@ function getImageByIndex(index: number, item: CustomTabBarItem) {
               <image :src="getImageByIndex(index, item)" mode="scaleToFill" class="h-20px w-20px" />
             </template>
             <view class="mt-2px text-12px">
-              {{ item.text }}
+              {{ getI18nText(item.text) }}
             </view>
             <!-- 角标显示 -->
             <view v-if="item.badge">
