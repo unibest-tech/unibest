@@ -112,6 +112,9 @@ const _tabbarList = customTabbarEnable ? customTabbarList.map(item => ({ text: i
 export const tabbarList = customTabbarEnable ? customTabbarList : nativeTabbarList
 
 const _tabbar: TabBar = {
+  // #ifdef MP-ALIPAY
+  customize: !!needHideNativeTabbar,
+  // #endif
   // 只有微信小程序支持 custom。App 和 H5 不生效
   custom: selectedTabbarStrategy === TABBAR_STRATEGY_MAP.CUSTOM_TABBAR_WITH_CACHE,
   color: '#999999',
