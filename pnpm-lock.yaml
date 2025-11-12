@@ -87,6 +87,9 @@ importers:
       vue:
         specifier: ^3.4.21
         version: 3.4.21(typescript@5.8.3)
+      vue-i18n:
+        specifier: 9.1.9
+        version: 9.1.9(vue@3.4.21(typescript@5.8.3))
       vue-router:
         specifier: 4.5.1
         version: 4.5.1(vue@3.4.21(typescript@5.8.3))
@@ -6073,6 +6076,12 @@ packages:
     resolution: {integrity: sha512-JdgRRUVrN0Y2GosA0M68DEbKlXMqJ7FQgsK8CjQD2vxvNSqAU6PZEpi4cfcTVtfM2GVOMjHo7GKKLbXxOBqDqA==}
     peerDependencies:
       vue: ^3.4.37
+
+  vue-i18n@9.1.9:
+    resolution: {integrity: sha512-JeRdNVxS2OGp1E+pye5XB6+M6BBkHwAv9C80Q7+kzoMdUDGRna06tjC0vCB/jDX9aWrl5swxOMFcyAr7or8XTA==}
+    engines: {node: '>= 10'}
+    peerDependencies:
+      vue: ^3.0.0
 
   vue-router@4.5.1:
     resolution: {integrity: sha512-ogAF3P97NPm8fJsE4by9dwSYtDwXIY1nFY9T6DyQnGHd1E2Da94w9JIolpe42LJGIl0DwOHBi8TcRPlPGwbTtw==}
@@ -13799,6 +13808,14 @@ snapshots:
 
   vue-flow-layout@0.1.1(vue@3.4.21(typescript@5.8.3)):
     dependencies:
+      vue: 3.4.21(typescript@5.8.3)
+
+  vue-i18n@9.1.9(vue@3.4.21(typescript@5.8.3)):
+    dependencies:
+      '@intlify/core-base': 9.1.9
+      '@intlify/shared': 9.1.9
+      '@intlify/vue-devtools': 9.1.9
+      '@vue/devtools-api': 6.6.4
       vue: 3.4.21(typescript@5.8.3)
 
   vue-router@4.5.1(vue@3.4.21(typescript@5.8.3)):
