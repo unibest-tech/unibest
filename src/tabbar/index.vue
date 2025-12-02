@@ -151,7 +151,8 @@ onShow(() => {
   bottom: 0;
   left: 0;
   right: 0;
-
+  z-index: 1000;
+  
   border-top: 1px solid #eee;
   box-sizing: border-box;
 }
