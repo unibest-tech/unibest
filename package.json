@@ -26,6 +26,12 @@
     "pnpm": ">=9"
   },
   "scripts": {
+    "openapi": "openapi-ts",
+    "init-husky": "git init && husky",
+    "init-baseFiles": "node ./scripts/create-base-files.js",
+    "init-json": "pnpm init-baseFiles",
+    "prepare": "pnpm init-husky & pnpm init-baseFiles",
+    "predev": "pnpm init-baseFiles",
     "preinstall": "npx only-allow pnpm",
     "uvm": "npx @dcloudio/uvm@latest",
     "uvm-rm": "node ./scripts/postupgrade.js",
@@ -36,7 +42,6 @@
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",
     "dev:custom": "uni -p",
-    "predev": "pnpm init-baseFiles",
     "dev": "uni",
     "dev:test": "uni --mode test",
     "dev:prod": "uni --mode production",
@@ -88,11 +93,6 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit",
-    "openapi": "openapi-ts",
-    "init-husky": "git init && husky",
-    "init-baseFiles": "node ./scripts/create-base-files.js",
-    "init-json": "pnpm init-baseFiles",
-    "prepare": "pnpm init-husky & pnpm init-baseFiles",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
   },
