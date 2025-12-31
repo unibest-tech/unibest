@@ -7,17 +7,9 @@ import { isMp } from '@uni-helper/uni-env'
 import { useTokenStore } from '@/store/token'
 import { isPageTabbar, tabbarStore } from '@/tabbar/store'
 import { getAllPages, getLastPage, HOME_PAGE, parseUrlToObj } from '@/utils/index'
-import { EXCLUDE_LOGIN_PATH_LIST, isNeedLoginMode, LOGIN_PAGE, LOGIN_PAGE_ENABLE_IN_MP, NOT_FOUND_PAGE } from './config'
+import { EXCLUDE_LOGIN_PATH_LIST, isNeedLoginMode, LOGIN_PAGE, LOGIN_PAGE_ENABLE_IN_MP } from './config'
 
 export const FG_LOG_ENABLE = false
-
-// 系统内部页面白名单（不需要检查路由存在性）
-const SYSTEM_INTERNAL_PATHS = [
-  '/__uniappchooselocation', // 选择位置页面
-  '/__uniapproute', // 路由页面
-  '/__uniappfilepicker', // 文件选择器
-  '/__uniappimagepicker', // 图片选择器
-]
 
 export function judgeIsExcludePath(path: string) {
   const isDev = import.meta.env.DEV
@@ -26,22 +18,6 @@ export function judgeIsExcludePath(path: string) {
   }
   const allExcludeLoginPages = getAllPages('excludeLoginPath') // dev 环境下，需要每次都重新获取，否则新配置就不会生效
   return EXCLUDE_LOGIN_PATH_LIST.includes(path) || (isDev && allExcludeLoginPages.some(page => page.path === path))
-}
-
-// 检查是否为系统内部页面
-export function isSystemInternalPath(path: string): boolean {
-  return SYSTEM_INTERNAL_PATHS.includes(path)
-}
-
-// 检查路由是否存在
-export function isRouteExists(path: string): boolean {
-  // 系统内部页面始终认为存在
-  if (isSystemInternalPath(path)) {
-    return true
-  }
-
-  const allPages = getAllPages()
-  return allPages.some(page => page.path === path) || path === '/'
 }
 
 export const navigateToInterceptor = {
@@ -66,19 +42,6 @@ export const navigateToInterceptor = {
       const normalizedCurrentPath = currentPath.startsWith('/') ? currentPath : `/${currentPath}`
       const baseDir = normalizedCurrentPath.substring(0, normalizedCurrentPath.lastIndexOf('/'))
       path = `${baseDir}/${path}`
-    }
-
-    // 系统内部页面直接放行（不检查路由存在性，不进行登录拦截）
-    if (isSystemInternalPath(path)) {
-      FG_LOG_ENABLE && console.log('系统内部页面，直接放行:', path)
-      return true
-    }
-
-    // 处理路由不存在的情况
-    if (!isRouteExists(path)) {
-      console.warn('路由不存在:', path)
-      uni.navigateTo({ url: NOT_FOUND_PAGE })
-      return false // 明确表示阻止原路由继续执行
     }
 
     // 插件页面
