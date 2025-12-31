@@ -6,7 +6,7 @@ import { useTokenStore } from '@/store/token'
 
 definePage({
   style: {
-    navigationBarTitleText: '我的',
+    navigationBarTitleText: '%tabbar.me%',
   },
 })
 
