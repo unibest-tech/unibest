@@ -62,6 +62,13 @@ export const customTabbarList: CustomTabBarItem[] = [
   //   isBulge: true,
   // },
   {
+    pagePath: 'pages/i18n/index',
+    text: '%i18n.title%',
+    iconType: 'unocss',
+    icon: 'i-carbon-ibm-watson-language-translator',
+    // badge: 10,
+  },
+  {
     pagePath: 'pages/me/me',
     text: '%tabbar.me%',
     iconType: 'unocss',
