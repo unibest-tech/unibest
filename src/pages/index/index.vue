@@ -50,5 +50,4 @@ onLoad(() => {
       </text>
     </view>
   </view>
-  <tabbar />
 </template>
