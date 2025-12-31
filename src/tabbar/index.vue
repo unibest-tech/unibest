@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // i-carbon-code
-import type { CustomTabBarItem } from './types'
 import { customTabbarEnable, needHideNativeTabbar, tabbarCacheEnable } from './config'
-import { getI18nText, setTabbarItem } from './i18n'
+import { setTabbarItem } from './i18n'
 import { tabbarList, tabbarStore } from './store'
+import TabbarItem from './TabbarItem.vue'
 
 // #ifdef MP-WEIXIN
 // 将自定义节点设置成虚拟的（去掉自定义组件包裹层），更加接近Vue组件的表现，能更好的使用flex属性
@@ -76,14 +76,6 @@ function getColorByIndex(index: number) {
   return tabbarStore.curIdx === index ? activeColor : inactiveColor
 }
 
-function getImageByIndex(index: number, item: CustomTabBarItem) {
-  if (!item.iconActive) {
-    console.warn('image 模式下，需要配置 iconActive (高亮时的图片），否则无法切换高亮图片')
-    return item.icon
-  }
-  return tabbarStore.curIdx === index ? item.iconActive : item.icon
-}
-
 // 注意，上面处理的是自定义tabbar，下面处理的是原生tabbar，参考：https://unibest.tech/base/10-i18n
 onShow(() => {
   setTabbarItem()
@@ -103,40 +95,10 @@ onShow(() => {
           <view v-if="item.isBulge" class="relative">
             <!-- 中间一个鼓包tabbarItem的处理 -->
             <view class="bulge">
-              <!-- TODO 2/2: 中间鼓包tabbarItem配置：通常是一个图片，或者icon，点击触发业务逻辑 -->
-              <!-- 常见的是：扫描按钮、发布按钮、更多按钮等 -->
-              <image class="mt-6rpx h-200rpx w-200rpx" src="/static/tabbar/scan.png" />
+              <TabbarItem :item="item" :index="index" class="text-center" is-bulge />
             </view>
           </view>
-          <view v-else class="relative px-3 text-center">
-            <template v-if="item.iconType === 'uiLib'">
-              <!-- TODO: 以下内容请根据选择的UI库自行替换 -->
-              <!-- 如：<wd-icon name="home" /> (https://wot-design-uni.cn/component/icon.html) -->
-              <!-- 如：<uv-icon name="home" /> (https://www.uvui.cn/components/icon.html) -->
-              <!-- 如：<sar-icon name="image" /> (https://sard.wzt.zone/sard-uniapp-docs/components/icon)(sar没有home图标^_^) -->
-              <!-- <wd-icon :name="item.icon" size="20" /> -->
-            </template>
-            <template v-if="item.iconType === 'unocss' || item.iconType === 'iconfont'">
-              <view :class="item.icon" class="text-20px" />
-            </template>
-            <template v-if="item.iconType === 'image'">
-              <image :src="getImageByIndex(index, item)" mode="scaleToFill" class="h-20px w-20px" />
-            </template>
-            <view class="mt-2px text-12px">
-              {{ getI18nText(item.text) }}
-            </view>
-            <!-- 角标显示 -->
-            <view v-if="item.badge">
-              <template v-if="item.badge === 'dot'">
-                <view class="absolute right-0 top-0 h-2 w-2 rounded-full bg-#f56c6c" />
-              </template>
-              <template v-else>
-                <view class="absolute top-0 box-border h-5 min-w-5 center rounded-full bg-#f56c6c px-1 text-center text-xs text-white -right-3">
-                  {{ item.badge > 99 ? '99+' : item.badge }}
-                </view>
-              </template>
-            </view>
-          </view>
+          <TabbarItem v-else :item="item" :index="index" class="relative px-3 text-center" />
         </view>
       </view>
 
@@ -152,7 +114,6 @@ onShow(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  
   border-top: 1px solid #eee;
   box-sizing: border-box;
 }
