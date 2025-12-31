@@ -1,7 +1,7 @@
 import path from 'node:path'
 import process from 'node:process'
 import Uni from '@uni-helper/plugin-uni'
-import Components from '@uni-helper/vite-plugin-uni-components'
+import UniComponents from '@uni-helper/vite-plugin-uni-components'
 // @see https://uni-helper.js.org/vite-plugin-uni-layouts
 import UniLayouts from '@uni-helper/vite-plugin-uni-layouts'
 // @see https://github.com/uni-helper/vite-plugin-uni-manifest
@@ -15,7 +15,7 @@ import UniPlatform from '@uni-helper/vite-plugin-uni-platform'
  * 分包优化、模块异步跨包调用、组件异步跨包引用
  * @see https://github.com/uni-ku/bundle-optimizer
  */
-import Optimization from '@uni-ku/bundle-optimizer'
+import UniOptimization from '@uni-ku/bundle-optimizer'
 // https://github.com/uni-ku/root
 import UniKuRoot from '@uni-ku/root'
 import dayjs from 'dayjs'
@@ -64,6 +64,7 @@ export default defineConfig(({ command, mode }) => {
     envDir: './env', // 自定义env目录
     base: VITE_APP_PUBLIC_BASE,
     plugins: [
+      // UniXXX 需要在 Uni 之前引入
       UniLayouts(),
       UniPlatform(),
       UniManifest(),
@@ -74,8 +75,14 @@ export default defineConfig(({ command, mode }) => {
         subPackages: [],
         dts: 'src/types/uni-pages.d.ts',
       }),
-      // Optimization 插件需要 page.json 文件，故应在 UniPages 插件之后执行
-      Optimization({
+      UniComponents({
+        extensions: ['vue'],
+        deep: true, // 是否递归扫描子目录，
+        directoryAsNamespace: false, // 是否把目录名作为命名空间前缀，true 时组件名为 目录名+组件名，
+        dts: 'src/types/components.d.ts', // 自动生成的组件类型声明文件路径（用于 TypeScript 支持）
+      }),
+      // UniOptimization 插件需要 page.json 文件，故应在 UniPages 插件之后执行
+      UniOptimization({
         enable: {
           'optimization': true,
           'async-import': true,
@@ -86,17 +93,9 @@ export default defineConfig(({ command, mode }) => {
         },
         logger: false,
       }),
-      // UniXXX 需要在 Uni 之前引入
       // 若存在改变 pages.json 的插件，请将 UniKuRoot 放置其后
       UniKuRoot({
-        excludePages: ['**/components/**/**.*'],
-      }),
-      // Components 需要在 Uni 之前引入
-      Components({
-        extensions: ['vue'],
-        deep: true, // 是否递归扫描子目录，
-        directoryAsNamespace: false, // 是否把目录名作为命名空间前缀，true 时组件名为 目录名+组件名，
-        dts: 'src/types/components.d.ts', // 自动生成的组件类型声明文件路径（用于 TypeScript 支持）
+        excludePages: ['**/components/**/**.*', '**/sections/**/**.*'],
       }),
       Uni(),
       {
