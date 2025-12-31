@@ -68,20 +68,20 @@ export default defineConfig(({ command, mode }) => {
       UniLayouts(),
       UniPlatform(),
       UniManifest(),
+      UniComponents({
+        extensions: ['vue'],
+        deep: true, // 是否递归扫描子目录，
+        directoryAsNamespace: false, // 是否把目录名作为命名空间前缀，true 时组件名为 目录名+组件名，
+        dts: 'src/types/components.d.ts', // 自动生成的组件类型声明文件路径（用于 TypeScript 支持）
+      }),
       UniPages({
-        exclude: ['**/components/**/**.*'],
+        exclude: ['**/components/**/**.*', '**/sections/**/**.*'],
         // pages 目录为 src/pages，分包目录不能配置在pages目录下！！
         // 是个数组，可以配置多个，但是不能为pages里面的目录！！
         subPackages: [
           'src/pages-auth', // 这个是必要的路由，包括登录页、注册页
         ],
         dts: 'src/types/uni-pages.d.ts',
-      }),
-      UniComponents({
-        extensions: ['vue'],
-        deep: true, // 是否递归扫描子目录，
-        directoryAsNamespace: false, // 是否把目录名作为命名空间前缀，true 时组件名为 目录名+组件名，
-        dts: 'src/types/components.d.ts', // 自动生成的组件类型声明文件路径（用于 TypeScript 支持）
       }),
       // UniOptimization 插件需要 page.json 文件，故应在 UniPages 插件之后执行
       UniOptimization({
