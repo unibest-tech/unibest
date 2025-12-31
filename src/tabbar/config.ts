@@ -16,7 +16,7 @@ export const TABBAR_STRATEGY_MAP = {
 }
 
 // TODO: 1/3. 通过这里切换使用tabbar的策略
-// 如果是使用 NO_TABBAR(0)，nativeTabbarList 和 customTabbarList 都不生效(里面的配置不用管)
+// 如果是使用 NO_TABBAR(0)，nativeTabbarList 和 customTabbarList 都不生效
 // 如果是使用 NATIVE_TABBAR(1)，只需要配置 nativeTabbarList，customTabbarList 不生效
 // 如果是使用 CUSTOM_TABBAR(2)，只需要配置 customTabbarList，nativeTabbarList 不生效
 export const selectedTabbarStrategy = TABBAR_STRATEGY_MAP.CUSTOM_TABBAR
