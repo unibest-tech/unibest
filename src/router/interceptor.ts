@@ -33,7 +33,7 @@ export const navigateToInterceptor = {
     }
 
     // 处理路由不存在的情况
-    if (path !== '/' && !getAllPages().some(page => page.path !== path)) {
+    if (path !== '/' && !getAllPages().some(page => page.path === path)) {
       console.warn('路由不存在:', path)
       return false // 明确表示阻止原路由继续执行
     }
