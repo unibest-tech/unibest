@@ -5,7 +5,7 @@ import zhHans from './zh-Hans.json' // 简体中文
 
 const messages = {
   en,
-  'zh-Hans': zhHans, // key 不能乱写，查看截图 screenshots/i18n.png
+  'zh-Hans': zhHans, // key 不能乱写，查看uniapp官网
 }
 
 const i18n = createI18n({
