@@ -27,13 +27,13 @@ export const nativeTabbarList: NativeTabBarItem[] = [
     iconPath: 'static/tabbar/home.png',
     selectedIconPath: 'static/tabbar/homeHL.png',
     pagePath: 'pages/index/index',
-    text: '首页',
+    text: '%tabbar.home%',
   },
   {
     iconPath: 'static/tabbar/personal.png',
     selectedIconPath: 'static/tabbar/personalHL.png',
     pagePath: 'pages/me/me',
-    text: '个人',
+    text: '%tabbar.me%',
   },
 ]
 
@@ -41,7 +41,7 @@ export const nativeTabbarList: NativeTabBarItem[] = [
 // 如果需要配置鼓包，需要在 'tabbar/store.ts' 里面设置，最后在 `tabbar/index.vue` 里面更改鼓包的图片
 export const customTabbarList: CustomTabBarItem[] = [
   {
-    text: '首页',
+    text: '%tabbar.home%',
     pagePath: 'pages/index/index',
     // 注意 unocss 图标需要如下处理：（二选一）
     // 1）在fg-tabbar.vue页面上引入一下并注释掉（见tabbar/index.vue代码第2行）
@@ -62,10 +62,15 @@ export const customTabbarList: CustomTabBarItem[] = [
   //   isBulge: true,
   // },
   {
+    pagePath: 'pages/i18n/index',
+    text: '%i18n.title%',
+    iconType: 'unocss',
+    icon: 'i-carbon-ibm-watson-language-translator',
+    // badge: 10,
+  },
+  {
     pagePath: 'pages/me/me',
-    text: '我的',
-    // 1）在fg-tabbar.vue页面上引入一下并注释掉（见tabbar/index.vue代码第2行）
-    // 2）配置到 unocss.config.ts 的 safelist 中
+    text: '%tabbar.me%',
     iconType: 'unocss',
     icon: 'i-carbon-user',
     // badge: 10,
@@ -119,6 +124,9 @@ export const needHideNativeTabbar = selectedTabbarStrategy === TABBAR_STRATEGY_M
 
 const _tabbarList = customTabbarEnable ? customTabbarList.map(item => ({ text: item.text, pagePath: item.pagePath })) : nativeTabbarList
 export const tabbarList = customTabbarEnable ? customTabbarList : nativeTabbarList
+
+// NATIVE_TABBAR(1) 时，显示原生Tabbar，在i18n的情况下需要 setTabbarItem (框架已经处理)
+export const isNativeTabbar = selectedTabbarStrategy === TABBAR_STRATEGY_MAP.NATIVE_TABBAR
 
 const _tabbar: TabBar = {
   // 只有微信小程序支持 custom。App 和 H5 不生效

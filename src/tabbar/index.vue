@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // i-carbon-code
 import { customTabbarEnable, needHideNativeTabbar, tabbarCacheEnable } from './config'
+import { setTabbarItem } from './i18n'
 import { tabbarList, tabbarStore } from './store'
 import TabbarItem from './TabbarItem.vue'
 
@@ -74,6 +75,11 @@ const inactiveColor = '#666'
 function getColorByIndex(index: number) {
   return tabbarStore.curIdx === index ? activeColor : inactiveColor
 }
+
+// 注意，上面处理的是自定义tabbar，下面处理的是原生tabbar，参考：https://unibest.tech/base/10-i18n
+onShow(() => {
+  setTabbarItem()
+})
 </script>
 
 <template>
