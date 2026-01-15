@@ -45,7 +45,7 @@ declare module '@uni-helper/vite-plugin-uni-pages' {
      *
      * 当前属性供 https://github.com/uni-helper/vite-plugin-uni-layouts 插件使用
      */
-    layout?: 'default'
+    layout?: 'default' | false
     /**
      * 是否从需要登录的路径中排除
      *
